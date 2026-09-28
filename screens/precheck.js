@@ -149,6 +149,8 @@
 
   window.SCREENS.register('precheck', {
     render: function(c, api){
+      /* 見ていた1件が もう無い(バックアップの よみこみで入れ替わった等)ときは はじめの画面へ(台本・失敗と次と同じ考え方) */
+      if(step === 6 && viewing && !load(api).some(function(x){ return x.id === viewing.id; })) reset();
       if(step >= 1 && step <= 4) renderQ(c, api);
       else if(step === 5 || step === 6) renderReview(c, api);
       else renderStart(c, api);

@@ -238,6 +238,23 @@ body[data-theme="dark"] .chip.on,
 body[data-theme="dark"] .big-btn.primary,
 body[data-theme="dark"] .big-btn.primary .sub,
 body[data-theme="dark"] .ov-close{ color:#10261b; }
+/* 文字用の緑(--brand-ink・2026-09-29 点検 tebiki-18): 明るい3テーマでは、白い字を載せる緑の地(ヘッダー・主ボタン・えらんだタグ・とじる)と、
+   緑を文字色に使う所(下ナビの選択中・リンク)だけ濃い緑にする(白い字と 5.3:1 / みずいろ 5.6:1)。
+   枠・線・飾りは --brand のまま(塗りつぶしのボタンの縁は地と同じ色にして、明るい緑の輪を出さない)。
+   くろ は --brand のまま(緑の地の上の字を濃い色にしているので、上の規則がそのまま効く) */
+:root{ --brand-ink:#237a52; }
+body[data-theme="aqua"]{ --brand-ink:#1f6f8f; }
+body[data-theme="white"]{ --brand-ink:#237a52; }
+body[data-theme="dark"]{ --brand-ink:var(--brand); }
+header#hd{ background:var(--brand-ink); }
+.big-btn.primary, .btn.primary, .chip.on{ background:var(--brand-ink); border-color:var(--brand-ink); }
+.ov-close{ background:var(--brand-ink); }
+.nav-btn.active{ color:var(--brand-ink); }
+.credit a{ color:var(--brand-ink); }
+/* 大ボタンの小さな説明: 白を少し抑えるのは残し、濃い緑の上で 4.5:1 を超える濃さに(.85 → .92) */
+.big-btn.primary .sub{ color:rgba(255,255,255,.92); }
+/* 入力欄の例文(placeholder): ブラウザ既定の灰色は しろ で 4.4:1・くろ で 3.2:1 なので、補足の文字と同じ色にする */
+.field input::placeholder, .field textarea::placeholder{ color:var(--sub); opacity:1; }
 
 /* ======== 写真の取り込みとトリミング(photo.js) ======== */
 .photo-ov{

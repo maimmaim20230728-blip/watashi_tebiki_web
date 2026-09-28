@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.4.1';                // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.4.2';                // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'watashi_tebiki';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'tebiki.';
 var LS_PREF = LS + 'pref.v1';
@@ -141,8 +141,11 @@ function el(tag, cls, txt){
 var NATIVE_TTS = (function(){
   try{
     var c = window.Capacitor;
-    if(c && typeof c.isNativePlatform === 'function' && c.isNativePlatform() && typeof c.registerPlugin === 'function'){
-      return c.registerPlugin('TextToSpeech');
+    if(c && typeof c.isNativePlatform === 'function' && c.isNativePlatform()){
+      /* 🔴 取得は Capacitor.Plugins.TextToSpeech(ネイティブが注入する)。registerPlugin は @capacitor/core の関数で WebView には無い(2026-09-29) */
+      var p = c.Plugins && c.Plugins.TextToSpeech;
+      if(p && typeof p.speak === 'function') return p;
+      if(typeof c.registerPlugin === 'function') return c.registerPlugin('TextToSpeech');
     }
   }catch(_){}
   return null;
@@ -257,19 +260,38 @@ function exportBackup(){
   setTimeout(function(){ URL.revokeObjectURL(a.href); }, 3000);
   toast(T('set.exported'));
 }
+/* よみこむ(2026-09-29 点検の直し): 別アプリ・壊れたファイルは たずねずに「よみこめませんでした」。
+   同じアプリのファイルなら、置き換える前に window.confirm でたずねる(Play版の WebView はネイティブのダイアログで出す)。
+   やめる → 何も変えない / OK → 丸ごと入れ替え(このアプリのキー「tebiki.」でファイルに無いものは消してから書く。
+   書きかけの下書きも入れ替わる。ほかのアプリのキーは消さない)。中身の欠けは各画面の load が整える */
 function importBackup(e){
   var f = e.target.files && e.target.files[0];
   if(!f) return;
   var r = new FileReader();
   r.onload = function(){
+    var d;
     try{
-      var d = JSON.parse(r.result);
-      if(d.app !== APP_KEY) throw new Error('different app');
-      if(d.data && typeof d.data === 'object'){ for(var k in d.data){ saveJSON(LS + k, d.data[k]); } }
+      d = JSON.parse(r.result);
+      if(!d || d.app !== APP_KEY) throw new Error('different app');
+    }catch(err){ toast(T('set.importFail')); return; }
+    var ok = false;
+    try{ ok = !!window.confirm(T('set.importConfirm')); }catch(_){ ok = false; }
+    if(!ok) return;
+    try{
+      var src = (d.data && typeof d.data === 'object' && !Array.isArray(d.data)) ? d.data : {};
+      var has = Object.prototype.hasOwnProperty;
+      var drop = [];
+      for(var i = 0; i < localStorage.length; i++){
+        var key = localStorage.key(i);
+        if(key && key.indexOf(LS) === 0 && key !== LS_PREF && !has.call(src, key.slice(LS.length))) drop.push(key);
+      }
+      drop.forEach(removeKey);
+      var failed = 0;
+      for(var k in src){ if(has.call(src, k) && !saveJSON(LS + k, src[k])) failed++; }   // 容量オーバー等は「よみこめませんでした」
       pref = sanitizePref(d.pref);
       savePref();
       applyAll(true);
-      toast(T('set.imported'));
+      toast(T(failed ? 'set.importFail' : 'set.imported'));
     }catch(err){ toast(T('set.importFail')); }
   };
   r.readAsText(f);

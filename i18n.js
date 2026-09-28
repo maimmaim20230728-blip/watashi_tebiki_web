@@ -1,4 +1,4 @@
-/* わたしの手引き帳(仮) 多言語テーブル(そよぎアプリ・キット v1・12言語)
+/* 場面の手引き・そよぎ 多言語テーブル(そよぎアプリ・キット v1・12言語)
    ・window.TEBIKI_I18N = { ja, en, de, fr, es, it, pt, nl, sv, ko, zh, ar }
    ・キー構造は全言語で完全一致(_check.js が ja を正として構造・配列要素数を機械照合)
    ・🔴 BUILDER: 文言は ja と en の両方に同じキーで足す。画面固有は screen.<画面id>.* に置く。
@@ -13,7 +13,7 @@
 
 /* ============ ja(正) ============ */
 var ja = {
-  app: { name:'わたしの手引き帳(仮)', tagline:'場面に入る前に引く、自分のための手引き。' },
+  app: { name:'場面の手引き・そよぎ', short:'場面の手引き', tagline:'場面に入る前に引く、自分のための手引き。' },
   nav: { home:'ホーム', bamen:'ばめん', after:'あとで', call:'いま電話', set:'せってい' },
   common: {
     ok:'OK', cancel:'やめる', save:'ほぞんする', del:'けす', back:'もどる', close:'とじる',
@@ -47,7 +47,7 @@ var ja = {
   },
   screen: {
     home: {
-      title:'わたしの手引き帳(仮)',
+      title:'場面の手引き',
       bamen:'ばめんを えらぶ', bamenSub:'じてん・だいほん・言う前の てんけん',
       after:'あとで 書く', afterSub:'なにが あった → つぎに ためす',
       call:'いま電話', callSub:'だれから・ようけん・いつまで・おりかえし',
@@ -129,7 +129,7 @@ var ja = {
 
 /* ============ en ============ */
 var en = {
-  app: { name:'My Playbook - SOYOGI (draft)', tagline:'Your own guide to look up before you step into a situation.' },
+  app: { name:'Situation Guide - SOYOGI', short:'Situation Guide', tagline:'Your own guide to look up before you step into a situation.' },
   nav: { home:'Home', bamen:'Situations', after:'Afterward', call:'Call now', set:'Settings' },
   common: {
     ok:'OK', cancel:'Cancel', save:'Save', del:'Delete', back:'Back', close:'Close',
@@ -163,7 +163,7 @@ var en = {
   },
   screen: {
     home: {
-      title:'My Playbook - SOYOGI (draft)',
+      title:'Situation Guide',
       bamen:'Choose a situation', bamenSub:'Phrase book, my scripts, check before speaking',
       after:'Write afterward', afterSub:'What happened → what to try next',
       call:'Call now', callSub:'Who, what, by when, call back',
@@ -249,7 +249,8 @@ function mergeDeep(t, s){ for(var k in s){ if(s[k] && typeof s[k] === 'object' &
 /* ---- de: 翻訳 ---- */
 TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Mein Leitfaden - SOYOGI (Entwurf)",
+    "name": "Situationsleitfaden - SOYOGI",
+    "short": "Situationsleitfaden",
     "tagline": "Ihr eigener Leitfaden zum Nachschlagen, bevor eine Situation beginnt."
   },
   "nav": {
@@ -344,7 +345,7 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Mein Leitfaden - SOYOGI (Entwurf)",
+      "title": "Situationsleitfaden",
       "bamen": "Situation wählen",
       "bamenSub": "Wörterbuch, Skripte, Check vor dem Sprechen",
       "after": "Später aufschreiben",
@@ -491,7 +492,8 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- fr: 翻訳 ---- */
 TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Mon guide personnel - SOYOGI (brouillon)",
+    "name": "Guide des situations - SOYOGI",
+    "short": "Guide des situations",
     "tagline": "Votre guide à vous, à consulter avant d'entrer dans une situation."
   },
   "nav": {
@@ -586,7 +588,7 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Mon guide personnel - SOYOGI (brouillon)",
+      "title": "Guide des situations",
       "bamen": "Choisir une situation",
       "bamenSub": "Lexique, mes scripts, vérification avant de parler",
       "after": "Écrire après coup",
@@ -733,7 +735,8 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- es: 翻訳 ---- */
 TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Mi guía personal - SOYOGI (borrador)",
+    "name": "Guía de situaciones - SOYOGI",
+    "short": "Guía de situaciones",
     "tagline": "Una guía propia para consultar antes de entrar en una situación."
   },
   "nav": {
@@ -828,7 +831,7 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Mi guía personal - SOYOGI (borrador)",
+      "title": "Guía de situaciones",
       "bamen": "Elegir una situación",
       "bamenSub": "Diccionario, guiones, revisión antes de hablar",
       "after": "Escribir después",
@@ -975,7 +978,8 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- it: 翻訳 ---- */
 TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Il mio prontuario - SOYOGI (bozza)",
+    "name": "Guida alle situazioni - SOYOGI",
+    "short": "Guida alle situazioni",
     "tagline": "Una guida personale da consultare prima di entrare in una situazione."
   },
   "nav": {
@@ -1070,7 +1074,7 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Il mio prontuario - SOYOGI (bozza)",
+      "title": "Guida alle situazioni",
       "bamen": "Scegliere una situazione",
       "bamenSub": "Dizionario, copioni, controllo prima di parlare",
       "after": "Scrivere dopo",
@@ -1217,7 +1221,8 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- pt: 翻訳 ---- */
 TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Meu guia pessoal - SOYOGI (rascunho)",
+    "name": "Guia de situações - SOYOGI",
+    "short": "Guia de situações",
     "tagline": "Um guia feito para si mesmo, para abrir antes de entrar numa situação."
   },
   "nav": {
@@ -1312,7 +1317,7 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Meu guia pessoal - SOYOGI (rascunho)",
+      "title": "Guia de situações",
       "bamen": "Escolher uma situação",
       "bamenSub": "Dicionário, roteiros, verificação antes de falar",
       "after": "Escrever depois",
@@ -1459,7 +1464,8 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- nl: 翻訳 ---- */
 TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Mijn wegwijzer - SOYOGI (voorlopig)",
+    "name": "Situatiegids - SOYOGI",
+    "short": "Situatiegids",
     "tagline": "Een gids voor uzelf, om na te slaan voordat u een situatie ingaat."
   },
   "nav": {
@@ -1554,7 +1560,7 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Mijn wegwijzer - SOYOGI (voorlopig)",
+      "title": "Situatiegids",
       "bamen": "Kies een situatie",
       "bamenSub": "Woordenboek, draaiboeken, check vóór het spreken",
       "after": "Achteraf opschrijven",
@@ -1701,7 +1707,8 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- sv: 翻訳 ---- */
 TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "Min handbok - SOYOGI (utkast)",
+    "name": "Situationsguide - SOYOGI",
+    "short": "Situationsguide",
     "tagline": "Din egen guide att titta i innan du går in i en situation."
   },
   "nav": {
@@ -1796,7 +1803,7 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "Min handbok - SOYOGI (utkast)",
+      "title": "Situationsguide",
       "bamen": "Välj situation",
       "bamenSub": "Ordbok, manus, koll innan du säger något",
       "after": "Skriv efteråt",
@@ -1943,7 +1950,8 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- ko: 翻訳 ---- */
 TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "나의 안내 수첩 - SOYOGI (가칭)",
+    "name": "상황별 길잡이 - SOYOGI",
+    "short": "상황별 길잡이",
     "tagline": "장면에 들어가기 전에 펼쳐 보는, 나를 위한 안내서."
   },
   "nav": {
@@ -2038,7 +2046,7 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "나의 안내 수첩 - SOYOGI (가칭)",
+      "title": "상황별 길잡이",
       "bamen": "장면 고르기",
       "bamenSub": "사전 · 대본 · 말하기 전 점검",
       "after": "나중에 쓰기",
@@ -2185,7 +2193,8 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- zh: 翻訳 ---- */
 TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "我的指南手册 - SOYOGI(暂定)",
+    "name": "场合指南 - SOYOGI",
+    "short": "场合指南",
     "tagline": "进入场景之前翻一翻，写给自己的指南。"
   },
   "nav": {
@@ -2280,7 +2289,7 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "我的指南手册 - SOYOGI(暂定)",
+      "title": "场合指南",
       "bamen": "选择场景",
       "bamenSub": "词典·台本·说之前的检查",
       "after": "事后记下",
@@ -2427,7 +2436,8 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
 /* ---- ar: 翻訳 ---- */
 TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
   "app": {
-    "name": "دفتر إرشاداتي - SOYOGI (مسودة)",
+    "name": "دليل المواقف - SOYOGI",
+    "short": "دليل المواقف",
     "tagline": "دليلك الخاص، للرجوع إليه قبل الدخول في أي موقف."
   },
   "nav": {
@@ -2522,7 +2532,7 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
   },
   "screen": {
     "home": {
-      "title": "دفتر إرشاداتي - SOYOGI (مسودة)",
+      "title": "دليل المواقف",
       "bamen": "اختيار موقف",
       "bamenSub": "قاموس العبارات، سيناريوهاتي، المراجعة قبل الكلام",
       "after": "الكتابة لاحقًا",

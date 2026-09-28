@@ -1,9 +1,9 @@
 'use strict';
-/* わたしの手引き帳(仮) Service Worker
+/* 場面の手引き・そよぎ Service Worker
    ・install時に実行ファイルをprecache / HTMLはnetwork-first / その他はcache-first
    ・開発/検証用ファイル(_始まり)はキャッシュしない
    🔴 更新のたびに CACHE 名を上げる。screens/ に画面を足したら ASSETS にも足す(_check.js が照合) */
-const CACHE = 'tebiki-v3';
+const CACHE = 'tebiki-v4';
 const ASSETS = [
   './',
   './index.html',

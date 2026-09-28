@@ -1,4 +1,4 @@
-/* わたしの手引き帳(仮) スタイル(そよぎアプリ・キット v1)
+/* 場面の手引き・そよぎ スタイル(そよぎアプリ・キット v1)
    ・そよぎブランド4色(明るい緑/水色/白/黒) = 4テーマ(body data-theme)
    ・シェルは縦フレックス(ヘッダー=上固定 / #main=スクロール / ナビ=下固定)。100dvh・特大文字でも下端まで届く
    ・大人の尊厳を保つ落ち着いたトーン。機能色のみ。でか文字・大ボタン(44px以上)・.pressing の沈み込み(tap.js連動)
@@ -204,7 +204,7 @@ input[type="file"].hidden{ display:none; }
 }
 .toast.show{ opacity:1; }
 
-/* ======== わたしの手引き帳 固有(シェルの変更点として README に記載) ======== */
+/* ======== 場面の手引き 固有(シェルの変更点として README に記載) ======== */
 .big-btn .txt{ display:flex; flex-direction:column; min-width:0; }
 .big-btn .sub{ font-size:.85em; font-weight:400; color:var(--sub); }
 .big-btn.primary .sub{ color:rgba(255,255,255,.85); }

@@ -9,6 +9,8 @@
   var openId = null;
 
   function entries(){ return window.TEBIKI_DICT || []; }
+  /* 辞典の中身は日本語: 右から左の言語(ar)でも句読点・かぎかっこが崩れないよう、左から右の日本語として置く */
+  function ja(e){ e.setAttribute('lang', 'ja'); e.setAttribute('dir', 'ltr'); return e; }
   function hit(e){
     if(tag !== 'all' && e.tags.indexOf(tag) < 0) return false;
     if(!query) return true;
@@ -19,6 +21,7 @@
 
   function renderList(c, api){
     c.textContent = '';
+    window.TEBIKI_PARTS.toTop();
     c.appendChild(api.el('h1', 'scr-title', api.T('screen.dict.title')));
     if(api.lang !== 'ja') c.appendChild(api.el('p', 'note', api.T('screen.dict.jaOnly')));
     var f = window.TEBIKI_PARTS.field(api, { label:api.T('screen.dict.search'), ph:api.T('screen.dict.searchPh'), value:query, id:'dict-q' });
@@ -40,8 +43,8 @@
         var li = api.el('li', 'tappable');
         li.setAttribute('data-id', e.id);
         var g = api.el('div', 'grow');
-        g.appendChild(api.el('div', 'dict-word', e.w));
-        g.appendChild(api.el('div', 'hint', e.lit));
+        g.appendChild(ja(api.el('div', 'dict-word', e.w)));
+        g.appendChild(ja(api.el('div', 'hint', e.lit)));
         li.appendChild(g);
         li.appendChild(api.el('span', 'hint', '›'));
         api.Tap.bind(li, function(){ openId = e.id; renderDetail(c, api, e); });
@@ -53,30 +56,31 @@
 
   function renderDetail(c, api, e){
     c.textContent = '';
+    window.TEBIKI_PARTS.toTop();
     var back = api.el('button', 'btn', '‹ ' + api.T('common.back'));
     back.id = 'dict-back';
     api.Tap.bind(back, function(){ openId = null; renderList(c, api); });
     c.appendChild(back);
-    c.appendChild(api.el('h1', 'scr-title dict-head', e.w));
+    c.appendChild(ja(api.el('h1', 'scr-title dict-head', e.w)));
     var tags = api.el('div', 'chips');
     e.tags.forEach(function(t){ tags.appendChild(api.el('span', 'chip', api.T('common.tags.' + t))); });
     c.appendChild(tags);
 
     var card = api.el('div', 'card');
     card.appendChild(api.el('div', 'show-label', api.T('screen.dict.lit')));
-    card.appendChild(api.el('p', 'dict-text', e.lit));
+    card.appendChild(ja(api.el('p', 'dict-text', e.lit)));
     c.appendChild(card);
 
     var card2 = api.el('div', 'card');
     card2.appendChild(api.el('div', 'show-label', api.T('screen.dict.maybe')));
-    var ul = api.el('ul', 'dict-maybe');
+    var ul = ja(api.el('ul', 'dict-maybe'));
     e.maybe.forEach(function(m){ ul.appendChild(api.el('li', null, m)); });
     card2.appendChild(ul);
     c.appendChild(card2);
 
     var card3 = api.el('div', 'card tappable');
     card3.appendChild(api.el('div', 'show-label', api.T('screen.dict.ask')));
-    card3.appendChild(api.el('p', 'dict-text', e.ask));
+    card3.appendChild(ja(api.el('p', 'dict-text', e.ask)));
     c.appendChild(card3);
 
     c.appendChild(api.el('p', 'hint', api.T('screen.dict.caution')));
@@ -85,7 +89,7 @@
     toScript.id = 'dict-to-script';
     api.Tap.bind(toScript, function(){
       /* 下書きを渡す(画面同士で状態を共有しないので保存を経由する) */
-      api.save('draft.script', { tag:e.tags[0], title:'「' + e.w + '」と言われたとき', body:api.T('screen.dict.ask') + ': ' + e.ask + '\n' });
+      api.save('draft.script', { tag:e.tags[0], title:api.T('screen.dict.draftTitle').replace('{w}', function(){ return e.w; }), body:api.T('screen.dict.ask') + ': ' + e.ask + '\n' });
       api.go('script');
     });
     c.appendChild(toScript);

@@ -216,6 +216,28 @@ input[type="file"].hidden{ display:none; }
 .dict-maybe li{ margin:0 0 4px; }
 .pre-answer{ font-size:1.25em; font-weight:700; line-height:1.4; background:var(--card); border-radius:10px; padding:10px 12px; overflow-wrap:anywhere; }
 .field input.call-input{ font-size:1.35em; font-weight:700; letter-spacing:.04em; }
+/* 右から左(ar)でも大ボタンの文字は行の始まりにそろえる */
+.big-btn{ text-align:start; }
+/* 一覧: ＋ボタン・場面タグ・項目の間をあける / 長い題は3行で切る(開けば全文) */
+.chips{ margin:10px 0 12px; }
+.list .dict-word{ display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:3; line-clamp:3; overflow:hidden; }
+.list .grow .hint{ display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; line-clamp:2; overflow:hidden; }
+/* 章の書き出し(全画面) */
+.exp-btn{ margin-top:6px; }
+.ov .note{ margin:12px 0; }
+.exp-text{
+  display:block; width:100%; min-height:12em; margin:0 0 12px; resize:vertical;
+  font-size:1em; font-family:inherit; line-height:1.5; padding:10px;
+  border:2px solid var(--line); border-radius:10px; background:var(--card); color:var(--ink);
+}
+/* くろ: 明るい緑の上の白い字は読みにくい(2.3:1)ので、緑の上の字だけ濃い色にする(約7:1。ブランド色そのものは変えない) */
+body[data-theme="dark"] header#hd,
+body[data-theme="dark"] .lang-label,
+body[data-theme="dark"] .btn.primary,
+body[data-theme="dark"] .chip.on,
+body[data-theme="dark"] .big-btn.primary,
+body[data-theme="dark"] .big-btn.primary .sub,
+body[data-theme="dark"] .ov-close{ color:#10261b; }
 
 /* ======== 写真の取り込みとトリミング(photo.js) ======== */
 .photo-ov{

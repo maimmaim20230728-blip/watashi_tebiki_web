@@ -23,6 +23,13 @@ var ja = {
     optional:'ぜんぶ 書かなくても だいじょうぶです。', today:'きょう',
     tags: { all:'すべて', work:'職場', school:'学校', hospital:'病院', shop:'店', family:'家族', phone:'電話', rule:'わたしのルール集' },
     tagLabel:'ばめん',
+    emptyTag:'「{t}」には まだ ありません。',
+    exp: {
+      btn:'文字で 書き出す',
+      hint:'他の人の 名前・会社名・電話番号は、ここで 伏せてから コピーしてください。ここで 書きかえても、ほぞんした 中身は かわりません。',
+      copy:'コピーする', copied:'コピーしました ✓',
+      copyFail:'コピーできませんでした。文字を えらんで コピーしてください。'
+    },
     photo: {
       camera:'カメラで とる', roll:'しゃしんから えらぶ',
       cropTitle:'しゃしんを 切りとる', cropHint:'ゆびで うごかすか、やじるしで あわせて、スライダーで 大きさを かえます。',
@@ -56,7 +63,7 @@ var ja = {
     bamen: {
       title:'ばめんを えらぶ',
       hint:'ばめんに 入る前に、ひとつ えらんでください。',
-      dict:'言い方の じてん', dictSub:'言葉どおり / ありがちな意味 / たしかめ方',
+      dict:'言い方の じてん', dictSub:'言葉どおり / ありがちな意味 / たしかめ方', dictJaOnly:'(日本語のみ)',
       script:'じぶんの だいほん', scriptSub:'ばめんごとに 書きためる(わたしのルール集も ここ)',
       precheck:'言う前の てんけん', precheckSub:'相手・場所・時間・相手は どう感じるか'
     },
@@ -68,7 +75,8 @@ var ja = {
       caution:'意味は 相手や ときによって ちがいます。ここに あるのは「よくある候補」です。まよったら 聞いて たしかめるのが いちばんです。',
       jaOnly:'この じてんは 日本語だけです。',
       noHit:'見つかりませんでした。べつの ことばで さがしてみてください。',
-      toScript:'この言い方の だいほんを 書く'
+      toScript:'この言い方の だいほんを 書く',
+      draftTitle:'「{w}」と言われたとき'
     },
     script: {
       title:'じぶんの だいほん',
@@ -93,9 +101,10 @@ var ja = {
       reviewHint:'4つの答えを 見て、言い方や タイミングを 変えるか 考えます。変えなくても だいじょうぶです。',
       redo:'もう一度', saveIt:'ほぞんして おく', noSave:'ほぞんしないで おわる',
       saved:'ほぞんしました。「ばめん」の「言う前の てんけん」から 見返せます。',
-      history:'ほぞんした てんけん',
+      history:'ほぞんした てんけん(30件まで)',
       needSay:'言うことを 書いてください',
-      unanswered:'(まだ 書いていません)'
+      unanswered:'(まだ 書いていません)',
+      quote:'「{s}」'
     },
     after: {
       title:'あとで 書く(失敗と つぎ)',
@@ -116,7 +125,7 @@ var ja = {
       hint:'電話を 聞きながら 4つの 欄に 書きます。数字は 大きく 出ます。直近 5件だけ 残ります。',
       f: ['だれから', 'ようけん', 'いつまで', 'おりかえし先'],
       fPh: ['会社名・名前', 'ひとことで', '日にち・時刻', '電話番号・名前'],
-      save:'この電話を のこす', clear:'欄を からにする',
+      save:'この電話を のこす', clear:'欄を からにする', clearConfirm:'ほんとうに 欄を からにしますか?',
       show:'大きく 見る',
       recent:'さいきんの 電話(5件まで)',
       empty:'まだ ありません。',
@@ -139,6 +148,13 @@ var en = {
     optional:'You do not have to fill in everything.', today:'Today',
     tags: { all:'All', work:'Work', school:'School', hospital:'Hospital', shop:'Shop', family:'Family', phone:'Phone', rule:'My rules' },
     tagLabel:'Situation',
+    emptyTag:'Nothing under "{t}" yet.',
+    exp: {
+      btn:'Export as text',
+      hint:'Hide other people\'s names, company names and phone numbers here before you copy. Changes here do not change what you saved.',
+      copy:'Copy', copied:'Copied ✓',
+      copyFail:'Could not copy. Please select the text and copy it.'
+    },
     photo: {
       camera:'Take a photo', roll:'Choose from photos',
       cropTitle:'Crop the photo', cropHint:'Drag with a finger or use the arrows, then change the size with the slider.',
@@ -172,7 +188,7 @@ var en = {
     bamen: {
       title:'Choose a situation',
       hint:'Pick one before you step into the situation.',
-      dict:'Phrase book', dictSub:'Literal meaning / likely meanings / how to check',
+      dict:'Phrase book', dictSub:'Literal meaning / likely meanings / how to check', dictJaOnly:'(Japanese only)',
       script:'My scripts', scriptSub:'Write per situation (my rules live here too)',
       precheck:'Check before speaking', precheckSub:'Who, where, when, how they may feel'
     },
@@ -184,7 +200,8 @@ var en = {
       caution:'Meanings differ by person and moment. These are common candidates only. When in doubt, asking is the surest way.',
       jaOnly:'This phrase book is in Japanese only.',
       noHit:'No match. Try another word.',
-      toScript:'Write a script for this phrase'
+      toScript:'Write a script for this phrase',
+      draftTitle:'When someone says "{w}"'
     },
     script: {
       title:'My scripts',
@@ -209,9 +226,10 @@ var en = {
       reviewHint:'Read the four answers and decide whether to change the wording or the timing. Keeping it as is, is fine too.',
       redo:'Do it again', saveIt:'Save this', noSave:'Finish without saving',
       saved:'Saved. You can find it under "Check before speaking".',
-      history:'Saved checks',
+      history:'Saved checks (up to 30)',
       needSay:'Please write what you will say',
-      unanswered:'(not written yet)'
+      unanswered:'(not written yet)',
+      quote:'"{s}"'
     },
     after: {
       title:'Write afterward',
@@ -232,7 +250,7 @@ var en = {
       hint:'Fill in four fields while listening. Numbers show large. Only the latest 5 are kept.',
       f: ['From', 'Matter', 'By when', 'Call back to'],
       fPh: ['company, name', 'in a few words', 'date, time', 'phone number, name'],
-      save:'Keep this call', clear:'Clear fields',
+      save:'Keep this call', clear:'Clear fields', clearConfirm:'Really clear the fields?',
       show:'Show large',
       recent:'Recent calls (up to 5)',
       empty:'Nothing yet.',
@@ -293,6 +311,14 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "Meine Regeln"
     },
     "tagLabel": "Situation",
+    "emptyTag": "Unter „{t}“ gibt es noch nichts.",
+    "exp": {
+      "btn": "Als Text exportieren",
+      "hint": "Machen Sie hier Namen anderer Personen, Firmennamen und Telefonnummern unkenntlich, bevor Sie kopieren. Änderungen hier ändern nicht, was Sie gespeichert haben.",
+      "copy": "Kopieren",
+      "copied": "Kopiert ✓",
+      "copyFail": "Kopieren nicht möglich. Bitte markieren Sie den Text und kopieren Sie ihn."
+    },
     "photo": {
       "camera": "Foto aufnehmen",
       "roll": "Aus Fotos wählen",
@@ -359,6 +385,7 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "Bitte wählen Sie etwas aus, bevor die Situation beginnt.",
       "dict": "Wörterbuch der Ausdrücke",
       "dictSub": "Wörtlich / häufige Bedeutung / wie man nachfragt",
+      "dictJaOnly": "(nur auf Japanisch)",
       "script": "Meine Skripte",
       "scriptSub": "Nach Situation sammeln („Meine Regeln“ auch hier)",
       "precheck": "Check vor dem Sprechen",
@@ -375,7 +402,8 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "Die Bedeutung hängt von der Person und vom Moment ab. Hier stehen nur häufige Möglichkeiten. Wenn Sie unsicher sind, ist Nachfragen der beste Weg.",
       "jaOnly": "Dieses Wörterbuch gibt es nur auf Japanisch.",
       "noHit": "Nichts gefunden. Versuchen Sie es bitte mit einem anderen Wort.",
-      "toScript": "Skript zu diesem Ausdruck schreiben"
+      "toScript": "Skript zu diesem Ausdruck schreiben",
+      "draftTitle": "Wenn jemand „{w}“ sagt"
     },
     "script": {
       "title": "Meine Skripte",
@@ -423,9 +451,10 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "Speichern",
       "noSave": "Ohne Speichern beenden",
       "saved": "Gespeichert. Sie können es unter „Situationen“ bei „Check vor dem Sprechen“ nachlesen.",
-      "history": "Gespeicherte Checks",
+      "history": "Gespeicherte Checks (bis zu 30)",
       "needSay": "Bitte schreiben Sie auf, was Sie sagen möchten.",
-      "unanswered": "(noch nicht ausgefüllt)"
+      "unanswered": "(noch nicht ausgefüllt)",
+      "quote": "„{s}“"
     },
     "after": {
       "title": "Später aufschreiben (Was nicht klappte und was als Nächstes)",
@@ -474,6 +503,7 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "Anruf speichern",
       "clear": "Felder leeren",
+      "clearConfirm": "Felder wirklich leeren?",
       "show": "Groß anzeigen",
       "recent": "Letzte Anrufe (bis zu 5)",
       "empty": "Noch nichts vorhanden.",
@@ -536,6 +566,14 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "Mes règles"
     },
     "tagLabel": "Situation",
+    "emptyTag": "Rien pour l'instant dans \"{t}\".",
+    "exp": {
+      "btn": "Exporter en texte",
+      "hint": "Avant de copier, masquez ici les noms des autres personnes, les noms d'entreprise et les numéros de téléphone. Ce que vous modifiez ici ne change pas ce que vous avez enregistré.",
+      "copy": "Copier",
+      "copied": "Copié ✓",
+      "copyFail": "Impossible de copier. Sélectionnez le texte et copiez-le."
+    },
     "photo": {
       "camera": "Prendre une photo",
       "roll": "Choisir dans les photos",
@@ -602,6 +640,7 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "Avant d'entrer dans la situation, choisissez-en une.",
       "dict": "Lexique des expressions",
       "dictSub": "Sens littéral / sens courant / comment vérifier",
+      "dictJaOnly": "(en japonais seulement)",
       "script": "Mes scripts",
       "scriptSub": "À écrire situation par situation (mes règles sont ici aussi)",
       "precheck": "Vérification avant de parler",
@@ -618,7 +657,8 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "Le sens change selon la personne et le moment. Ce qui est ici, ce sont des \"possibilités courantes\". En cas de doute, le mieux est de demander pour vérifier.",
       "jaOnly": "Ce lexique existe en japonais seulement.",
       "noHit": "Aucun résultat. Essayez avec un autre mot.",
-      "toScript": "Écrire un script pour cette expression"
+      "toScript": "Écrire un script pour cette expression",
+      "draftTitle": "Quand on me dit \"{w}\""
     },
     "script": {
       "title": "Mes scripts",
@@ -666,9 +706,10 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "Enregistrer",
       "noSave": "Terminer sans enregistrer",
       "saved": "Enregistré. Vous pourrez le relire dans \"Situations\", sous \"Vérification avant de parler\".",
-      "history": "Vérifications enregistrées",
+      "history": "Vérifications enregistrées (30 au maximum)",
       "needSay": "Veuillez écrire ce que vous allez dire",
-      "unanswered": "(pas encore écrit)"
+      "unanswered": "(pas encore écrit)",
+      "quote": "« {s} »"
     },
     "after": {
       "title": "Écrire après coup (ce qui n'a pas marché, et la suite)",
@@ -717,6 +758,7 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "Garder cet appel",
       "clear": "Vider les champs",
+      "clearConfirm": "Voulez-vous vraiment vider les champs ?",
       "show": "Afficher en grand",
       "recent": "Appels récents (5 au maximum)",
       "empty": "Rien pour l'instant.",
@@ -779,6 +821,14 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "Mis reglas"
     },
     "tagLabel": "Situación",
+    "emptyTag": "Todavía no hay nada en «{t}».",
+    "exp": {
+      "btn": "Exportar como texto",
+      "hint": "Antes de copiar, conviene ocultar aquí los nombres de otras personas, de empresas y los números de teléfono. Lo que se cambie aquí no modifica lo guardado.",
+      "copy": "Copiar",
+      "copied": "Copiado ✓",
+      "copyFail": "No se pudo copiar. Se puede seleccionar el texto y copiarlo a mano."
+    },
     "photo": {
       "camera": "Tomar una foto",
       "roll": "Elegir de las fotos",
@@ -845,6 +895,7 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "Antes de entrar en la situación, elegir una opción.",
       "dict": "Diccionario de expresiones",
       "dictSub": "Sentido literal / sentidos habituales / cómo confirmar",
+      "dictJaOnly": "(solo en japonés)",
       "script": "Mis guiones",
       "scriptSub": "Ir anotando por situación (aquí también están «Mis reglas»)",
       "precheck": "Revisión antes de hablar",
@@ -861,7 +912,8 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "El sentido cambia según la persona y el momento. Aquí solo hay «posibles sentidos habituales». Ante la duda, lo mejor es preguntar para confirmar.",
       "jaOnly": "Este diccionario está solo en japonés.",
       "noHit": "No se encontró nada. Se puede probar con otra palabra.",
-      "toScript": "Escribir un guion para esta expresión"
+      "toScript": "Escribir un guion para esta expresión",
+      "draftTitle": "Cuando me dicen «{w}»"
     },
     "script": {
       "title": "Mis guiones",
@@ -909,9 +961,10 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "Guardar esta revisión",
       "noSave": "Terminar sin guardar",
       "saved": "Guardada. Se puede repasar desde «Revisión antes de hablar», en «Situaciones».",
-      "history": "Revisiones guardadas",
+      "history": "Revisiones guardadas (hasta 30)",
       "needSay": "Falta escribir lo que se va a decir",
-      "unanswered": "(todavía sin escribir)"
+      "unanswered": "(todavía sin escribir)",
+      "quote": "«{s}»"
     },
     "after": {
       "title": "Escribir después (lo que no salió bien y lo siguiente)",
@@ -960,6 +1013,7 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "Guardar esta llamada",
       "clear": "Vaciar los campos",
+      "clearConfirm": "¿Vaciar los campos de verdad?",
       "show": "Ver en grande",
       "recent": "Llamadas recientes (hasta 5)",
       "empty": "Todavía no hay nada.",
@@ -1022,6 +1076,14 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "Le mie regole"
     },
     "tagLabel": "Situazione",
+    "emptyTag": "Ancora niente in «{t}».",
+    "exp": {
+      "btn": "Esporta come testo",
+      "hint": "Prima di copiare, nasconda qui i nomi di altre persone, delle aziende e i numeri di telefono. Le modifiche fatte qui non cambiano ciò che ha salvato.",
+      "copy": "Copia",
+      "copied": "Copiato ✓",
+      "copyFail": "Non è stato possibile copiare. Selezioni il testo e lo copi."
+    },
     "photo": {
       "camera": "Scattare una foto",
       "roll": "Scegliere dalle foto",
@@ -1088,6 +1150,7 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "Prima di entrare nella situazione, ne scelga una.",
       "dict": "Dizionario delle espressioni",
       "dictSub": "Significato letterale / significati frequenti / come chiedere conferma",
+      "dictJaOnly": "(solo in giapponese)",
       "script": "I miei copioni",
       "scriptSub": "Da scrivere per ogni situazione (qui ci sono anche le mie regole)",
       "precheck": "Controllo prima di parlare",
@@ -1104,7 +1167,8 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "Il significato cambia a seconda della persona e del momento. Qui ci sono solo i significati possibili più comuni. Nel dubbio, la cosa migliore è chiedere per esserne sicuri.",
       "jaOnly": "Questo dizionario è solo in giapponese.",
       "noHit": "Nessun risultato. Provi a cercare con un'altra parola.",
-      "toScript": "Scrivere un copione per questa espressione"
+      "toScript": "Scrivere un copione per questa espressione",
+      "draftTitle": "Quando mi dicono «{w}»"
     },
     "script": {
       "title": "I miei copioni",
@@ -1152,9 +1216,10 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "Salvare",
       "noSave": "Finire senza salvare",
       "saved": "Salvato. Può rileggerlo da «Controllo prima di parlare» in «Situazioni».",
-      "history": "Controlli salvati",
+      "history": "Controlli salvati (fino a 30)",
       "needSay": "Scriva ciò che vuole dire, per favore.",
-      "unanswered": "(non ancora scritto)"
+      "unanswered": "(non ancora scritto)",
+      "quote": "«{s}»"
     },
     "after": {
       "title": "Scrivere dopo (errori e prossima volta)",
@@ -1203,6 +1268,7 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "Conservare questa telefonata",
       "clear": "Svuotare i campi",
+      "clearConfirm": "Svuotare davvero i campi?",
       "show": "Vedere in grande",
       "recent": "Telefonate recenti (fino a 5)",
       "empty": "Ancora niente.",
@@ -1265,6 +1331,14 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "Minhas regras"
     },
     "tagLabel": "Situação",
+    "emptyTag": "Ainda não há nada em \"{t}\".",
+    "exp": {
+      "btn": "Exportar como texto",
+      "hint": "Antes de copiar, ocultar aqui nomes de outras pessoas, de empresas e números de telefone. O que for alterado aqui não muda o que foi guardado.",
+      "copy": "Copiar",
+      "copied": "Copiado ✓",
+      "copyFail": "Não foi possível copiar. É possível selecionar o texto e copiá-lo."
+    },
     "photo": {
       "camera": "Tirar uma foto",
       "roll": "Escolher entre as fotos",
@@ -1331,6 +1405,7 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "Antes de entrar na situação, escolher uma das opções.",
       "dict": "Dicionário de expressões",
       "dictSub": "Sentido literal / sentidos prováveis / como confirmar",
+      "dictJaOnly": "(apenas em japonês)",
       "script": "Meus roteiros",
       "scriptSub": "Escrever aos poucos, por situação (\"Minhas regras\" também está aqui)",
       "precheck": "Verificação antes de falar",
@@ -1347,7 +1422,8 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "O sentido muda conforme a pessoa e o momento. O que está aqui são apenas \"possibilidades comuns\". Na dúvida, o melhor é perguntar e confirmar.",
       "jaOnly": "Este dicionário existe apenas em japonês.",
       "noHit": "Nada encontrado. Tentar com outra palavra.",
-      "toScript": "Escrever um roteiro para esta expressão"
+      "toScript": "Escrever um roteiro para esta expressão",
+      "draftTitle": "Quando me dizem \"{w}\""
     },
     "script": {
       "title": "Meus roteiros",
@@ -1395,9 +1471,10 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "Guardar",
       "noSave": "Terminar sem guardar",
       "saved": "Guardado. É possível rever em \"Situações\", em \"Verificação antes de falar\".",
-      "history": "Verificações guardadas",
+      "history": "Verificações guardadas (até 30)",
       "needSay": "É preciso preencher \"O que vou dizer\"",
-      "unanswered": "(ainda não escrito)"
+      "unanswered": "(ainda não escrito)",
+      "quote": "\"{s}\""
     },
     "after": {
       "title": "Escrever depois (tropeços e próximo passo)",
@@ -1446,6 +1523,7 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "Guardar esta chamada",
       "clear": "Limpar os campos",
+      "clearConfirm": "Limpar mesmo os campos?",
       "show": "Ver ampliado",
       "recent": "Chamadas recentes (até 5)",
       "empty": "Ainda não há nada.",
@@ -1508,6 +1586,14 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "Mijn regels"
     },
     "tagLabel": "Situatie",
+    "emptyTag": "Nog niets onder \"{t}\".",
+    "exp": {
+      "btn": "Als tekst exporteren",
+      "hint": "Maak hier namen van andere mensen, bedrijfsnamen en telefoonnummers onherkenbaar voordat u kopieert. Wat u hier verandert, verandert niets aan wat u hebt opgeslagen.",
+      "copy": "Kopiëren",
+      "copied": "Gekopieerd ✓",
+      "copyFail": "Kopiëren is niet gelukt. Selecteer de tekst en kopieer hem zelf."
+    },
     "photo": {
       "camera": "Foto maken",
       "roll": "Kiezen uit foto's",
@@ -1574,6 +1660,7 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "Kies er één voordat u de situatie ingaat.",
       "dict": "Woordenboek van uitdrukkingen",
       "dictSub": "Letterlijk / wat vaak bedoeld wordt / hoe u het navraagt",
+      "dictJaOnly": "(alleen in het Japans)",
       "script": "Mijn draaiboeken",
       "scriptSub": "Per situatie opschrijven en bewaren (Mijn regels staan hier ook)",
       "precheck": "Check vóór het spreken",
@@ -1590,7 +1677,8 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "De betekenis verschilt per persoon en per moment. Wat hier staat, zijn alleen veelvoorkomende mogelijkheden. Twijfelt u? Dan kunt u het het beste even navragen.",
       "jaOnly": "Dit woordenboek is alleen in het Japans.",
       "noHit": "Niets gevonden. Probeer het met een ander woord.",
-      "toScript": "Een draaiboek schrijven voor deze uitdrukking"
+      "toScript": "Een draaiboek schrijven voor deze uitdrukking",
+      "draftTitle": "Als iemand \"{w}\" zegt"
     },
     "script": {
       "title": "Mijn draaiboeken",
@@ -1638,9 +1726,10 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "Dit opslaan",
       "noSave": "Stoppen zonder opslaan",
       "saved": "Opgeslagen. U kunt het teruglezen bij \"Check vóór het spreken\" onder \"Situaties\".",
-      "history": "Opgeslagen checks",
+      "history": "Opgeslagen checks (maximaal 30)",
       "needSay": "Schrijf alstublieft op wat u gaat zeggen",
-      "unanswered": "(nog niet ingevuld)"
+      "unanswered": "(nog niet ingevuld)",
+      "quote": "\"{s}\""
     },
     "after": {
       "title": "Achteraf opschrijven (wat niet lukte en de volgende keer)",
@@ -1689,6 +1778,7 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "Dit gesprek bewaren",
       "clear": "Velden leegmaken",
+      "clearConfirm": "Weet u zeker dat u de velden wilt leegmaken?",
       "show": "Groot tonen",
       "recent": "Recente gesprekken (maximaal 5)",
       "empty": "Nog niets.",
@@ -1751,6 +1841,14 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "Mina regler"
     },
     "tagLabel": "Situation",
+    "emptyTag": "Inget under ”{t}” ännu.",
+    "exp": {
+      "btn": "Exportera som text",
+      "hint": "Dölj andras namn, företagsnamn och telefonnummer här innan du kopierar. Det du ändrar här ändrar inte det du har sparat.",
+      "copy": "Kopiera",
+      "copied": "Kopierat ✓",
+      "copyFail": "Det gick inte att kopiera. Markera texten och kopiera den."
+    },
     "photo": {
       "camera": "Ta ett foto",
       "roll": "Välj bland foton",
@@ -1817,6 +1915,7 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "Välj en innan du går in i situationen.",
       "dict": "Ordbok för uttryck",
       "dictSub": "Ordagrant / vanliga betydelser / så kan du kolla",
+      "dictJaOnly": "(bara på japanska)",
       "script": "Mina manus",
       "scriptSub": "Skriv för varje situation (Mina regler finns också här)",
       "precheck": "Koll innan du säger något",
@@ -1833,7 +1932,8 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "Betydelsen kan skilja sig beroende på person och tillfälle. Här finns bara ”vanliga förslag”. Om du är osäker är det bäst att fråga och kolla.",
       "jaOnly": "Den här ordboken finns bara på japanska.",
       "noHit": "Inget hittades. Försök söka med ett annat ord.",
-      "toScript": "Skriv ett manus för det här uttrycket"
+      "toScript": "Skriv ett manus för det här uttrycket",
+      "draftTitle": "När någon säger ”{w}”"
     },
     "script": {
       "title": "Mina manus",
@@ -1881,9 +1981,10 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "Spara den här",
       "noSave": "Avsluta utan att spara",
       "saved": "Sparat. Du kan titta på den igen via ”Koll innan du säger något” under ”Situationer”.",
-      "history": "Sparade kollar",
+      "history": "Sparade kollar (upp till 30)",
       "needSay": "Skriv vad du tänker säga",
-      "unanswered": "(inte skrivet ännu)"
+      "unanswered": "(inte skrivet ännu)",
+      "quote": "”{s}”"
     },
     "after": {
       "title": "Skriv efteråt (misstag och nästa gång)",
@@ -1932,6 +2033,7 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "Spara samtalet",
       "clear": "Töm fälten",
+      "clearConfirm": "Vill du verkligen tömma fälten?",
       "show": "Visa stort",
       "recent": "Senaste samtal (upp till 5)",
       "empty": "Inget ännu.",
@@ -1994,6 +2096,14 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "나의 규칙집"
     },
     "tagLabel": "장면",
+    "emptyTag": "‘{t}’에는 아직 없어요.",
+    "exp": {
+      "btn": "글자로 내보내기",
+      "hint": "복사하기 전에 여기서 다른 사람의 이름, 회사 이름, 전화번호를 가려 주세요. 여기서 고쳐도 저장한 내용은 바뀌지 않아요.",
+      "copy": "복사하기",
+      "copied": "복사했어요 ✓",
+      "copyFail": "복사하지 못했어요. 글자를 선택해서 복사해 주세요."
+    },
     "photo": {
       "camera": "카메라로 찍기",
       "roll": "사진에서 고르기",
@@ -2060,6 +2170,7 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "장면에 들어가기 전에 하나를 골라 주세요.",
       "dict": "표현 사전",
       "dictSub": "말 그대로의 뜻 / 흔히 담긴 뜻 / 확인하는 법",
+      "dictJaOnly": "(일본어만)",
       "script": "나의 대본",
       "scriptSub": "장면별로 적어 두기(나의 규칙집도 여기에)",
       "precheck": "말하기 전 점검",
@@ -2076,7 +2187,8 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "뜻은 상대나 때에 따라 달라요. 여기 있는 것은 ‘흔한 후보’예요. 헷갈리면 물어서 확인하는 것이 가장 좋아요.",
       "jaOnly": "이 사전은 일본어로만 되어 있어요.",
       "noHit": "찾지 못했어요. 다른 단어로 찾아봐 주세요.",
-      "toScript": "이 표현의 대본 쓰기"
+      "toScript": "이 표현의 대본 쓰기",
+      "draftTitle": "‘{w}’라는 말을 들었을 때"
     },
     "script": {
       "title": "나의 대본",
@@ -2124,9 +2236,10 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "저장해 두기",
       "noSave": "저장하지 않고 끝내기",
       "saved": "저장했어요. ‘장면’의 ‘말하기 전 점검’에서 다시 볼 수 있어요.",
-      "history": "저장한 점검",
+      "history": "저장한 점검(30건까지)",
       "needSay": "할 말을 써 주세요",
-      "unanswered": "(아직 쓰지 않았어요)"
+      "unanswered": "(아직 쓰지 않았어요)",
+      "quote": "“{s}”"
     },
     "after": {
       "title": "나중에 쓰기(실패와 다음)",
@@ -2175,6 +2288,7 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "이 전화 남기기",
       "clear": "칸 비우기",
+      "clearConfirm": "정말 칸을 비울까요?",
       "show": "크게 보기",
       "recent": "최근 전화(5건까지)",
       "empty": "아직 없어요.",
@@ -2237,6 +2351,14 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "我的规则集"
     },
     "tagLabel": "场景",
+    "emptyTag": "“{t}”里还没有。",
+    "exp": {
+      "btn": "导出为文字",
+      "hint": "复制之前，请在这里把别人的名字、公司名和电话号码隐去。在这里修改不会改变已保存的内容。",
+      "copy": "复制",
+      "copied": "已复制 ✓",
+      "copyFail": "无法复制。请选中文字后复制。"
+    },
     "photo": {
       "camera": "用相机拍",
       "roll": "从照片中选",
@@ -2303,6 +2425,7 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "进入场景之前，请选一项。",
       "dict": "说法词典",
       "dictSub": "字面意思 / 常见含义 / 确认方法",
+      "dictJaOnly": "(仅日语)",
       "script": "我的台本",
       "scriptSub": "按场景记下来(“我的规则集”也在这里)",
       "precheck": "说之前的检查",
@@ -2319,7 +2442,8 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "意思会因对方和时机而不同。这里列出的只是“常见的候选”。拿不准时，问一问、确认一下是最好的。",
       "jaOnly": "这本词典只有日语。",
       "noHit": "没有找到。请换个词再搜搜看。",
-      "toScript": "为这个说法写台本"
+      "toScript": "为这个说法写台本",
+      "draftTitle": "别人说“{w}”的时候"
     },
     "script": {
       "title": "我的台本",
@@ -2367,9 +2491,10 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "保存下来",
       "noSave": "不保存，直接结束",
       "saved": "已保存。可以在“场景”的“说之前的检查”里回看。",
-      "history": "已保存的检查",
+      "history": "已保存的检查(最多30条)",
       "needSay": "请写下要说的话",
-      "unanswered": "(还没写)"
+      "unanswered": "(还没写)",
+      "quote": "“{s}”"
     },
     "after": {
       "title": "事后记下(失败与下一步)",
@@ -2418,6 +2543,7 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "保存这通电话",
       "clear": "清空各栏",
+      "clearConfirm": "真的要清空各栏吗？",
       "show": "放大查看",
       "recent": "最近的电话(最多5条)",
       "empty": "还没有。",
@@ -2480,6 +2606,14 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "rule": "مجموعة قواعدي"
     },
     "tagLabel": "الموقف",
+    "emptyTag": "لا يوجد شيء في «{t}» بعد.",
+    "exp": {
+      "btn": "تصدير كنص",
+      "hint": "قبل النسخ، يُرجى إخفاء أسماء الآخرين وأسماء الشركات وأرقام الهواتف هنا. ما تغيّره هنا لا يغيّر ما حفظته.",
+      "copy": "نسخ",
+      "copied": "تم النسخ ✓",
+      "copyFail": "تعذّر النسخ. يُرجى تحديد النص ونسخه."
+    },
     "photo": {
       "camera": "التقاط صورة بالكاميرا",
       "roll": "اختيار من الصور",
@@ -2546,6 +2680,7 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "hint": "قبل الدخول في الموقف، يُرجى اختيار واحد.",
       "dict": "قاموس العبارات",
       "dictSub": "المعنى الحرفي / المعاني الشائعة / طريقة التأكد",
+      "dictJaOnly": "(باللغة اليابانية فقط)",
       "script": "سيناريوهاتي",
       "scriptSub": "تُكتب وتُجمع لكل موقف (مجموعة قواعدي هنا أيضًا)",
       "precheck": "المراجعة قبل الكلام",
@@ -2562,7 +2697,8 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "caution": "يختلف المعنى بحسب الشخص والوقت. ما هنا مجرد «احتمالات شائعة». عند التردد، يبقى السؤال للتأكد هو أفضل طريقة.",
       "jaOnly": "هذا القاموس باللغة اليابانية فقط.",
       "noHit": "لم يُعثر على نتيجة. يمكنك تجربة البحث بكلمة أخرى.",
-      "toScript": "كتابة سيناريو لهذه العبارة"
+      "toScript": "كتابة سيناريو لهذه العبارة",
+      "draftTitle": "عندما يقول لي أحدهم «{w}»"
     },
     "script": {
       "title": "سيناريوهاتي",
@@ -2610,9 +2746,10 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "saveIt": "حفظ هذه المراجعة",
       "noSave": "إنهاء دون حفظ",
       "saved": "تم الحفظ. يمكنك الرجوع إليها من «المراجعة قبل الكلام» في «المواقف».",
-      "history": "المراجعات المحفوظة",
+      "history": "المراجعات المحفوظة (حتى 30)",
       "needSay": "يُرجى كتابة ما تنوي قوله",
-      "unanswered": "(لم يُكتب بعد)"
+      "unanswered": "(لم يُكتب بعد)",
+      "quote": "«{s}»"
     },
     "after": {
       "title": "الكتابة لاحقًا (ما لم ينجح، والخطوة التالية)",
@@ -2661,6 +2798,7 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
       ],
       "save": "حفظ هذه المكالمة",
       "clear": "إفراغ الخانات",
+      "clearConfirm": "هل تريد إفراغ الخانات حقًا؟",
       "show": "عرض بحجم كبير",
       "recent": "المكالمات الأخيرة (حتى 5)",
       "empty": "لا يوجد شيء بعد.",

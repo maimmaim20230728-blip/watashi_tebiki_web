@@ -6,7 +6,9 @@
       var P = window.TEBIKI_PARTS;
       c.appendChild(api.el('h1', 'scr-title', api.T('screen.bamen.title')));
       c.appendChild(api.el('p', 'hint', api.T('screen.bamen.hint')));
-      c.appendChild(P.bigBtn(api, { id:'bamen-dict', ico:'📖', label:api.T('screen.bamen.dict'), sub:api.T('screen.bamen.dictSub'), onTap:function(){ api.go('dict'); } }));
+      /* 辞典の中身は日本語だけ: 日本語以外のときは入口の説明にも書いておく */
+      var dictSub = api.T('screen.bamen.dictSub') + (api.lang !== 'ja' ? ' ' + api.T('screen.bamen.dictJaOnly') : '');
+      c.appendChild(P.bigBtn(api, { id:'bamen-dict', ico:'📖', label:api.T('screen.bamen.dict'), sub:dictSub, onTap:function(){ api.go('dict'); } }));
       c.appendChild(P.bigBtn(api, { id:'bamen-script', ico:'📝', label:api.T('screen.bamen.script'), sub:api.T('screen.bamen.scriptSub'), onTap:function(){ api.go('script'); } }));
       c.appendChild(P.bigBtn(api, { id:'bamen-precheck', ico:'☑', label:api.T('screen.bamen.precheck'), sub:api.T('screen.bamen.precheckSub'), onTap:function(){ api.go('precheck'); } }));
     }

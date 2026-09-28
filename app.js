@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.4.0';                // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.4.1';                // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'watashi_tebiki';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'tebiki.';
 var LS_PREF = LS + 'pref.v1';
@@ -86,12 +86,16 @@ function applyI18n(){
   applyBarSpace();
 }
 
-/* ヘッダーの名前: 正式名(そよぎ付き)が入りきらないときだけ、そよぎを抜いた短い名前にする(ヒロさん指示 2026-09-28) */
+/* ヘッダーの名前: 正式名(そよぎ付き)が入りきらないときだけ、そよぎを抜いた短い名前にする(ヒロさん指示 2026-09-28)
+   ・判定は 1px でもはみ出したら(+1 の余裕を持たせると ar・360px で正式名が「…」で切れた)
+   ・短い名前でも入らない狭い画面(320px の de/fr/es/it/pt など)だけ、字を少し小さくする */
 function fitTitle(){
   var e = $('hd-title'); if(!e) return;
   var full = T('app.name'), s = T('app.short');
+  if(e.style) e.style.fontSize = '';
   e.textContent = full;
-  if(s !== 'app.short' && s !== full && e.scrollWidth > e.clientWidth + 1) e.textContent = s;
+  if(s !== 'app.short' && s !== full && e.scrollWidth > e.clientWidth) e.textContent = s;
+  if(e.style && e.scrollWidth > e.clientWidth) e.style.fontSize = '16px';
 }
 if(typeof window !== 'undefined' && window.addEventListener) window.addEventListener('resize', function(){ fitTitle(); });
 /* ---- 見た目/音 ---- */

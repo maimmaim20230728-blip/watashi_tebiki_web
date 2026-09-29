@@ -23,9 +23,15 @@
     return list;
   }
 
+  var box = null;   // いま描いている入れ物(戻るボタン用)
+
   window.SCREENS.register('call', {
+    /* 戻るボタン(Play版・2026-09-29): 「欄を からにする」の確かめ中なら いいえ と同じ。そうでなければ来た画面へ
+       (4つの欄は入れるたびに書きかけとして残すので、離れても消えない=確かめない) */
+    back: function(api){ return !!(box && window.TEBIKI_PARTS.disarm(box)); },
     render: function(c, api){
       var P = window.TEBIKI_PARTS;
+      box = c;
       function again(){ c.textContent = ''; window.SCREENS.get('call').render(c, api); }
       c.appendChild(api.el('h1', 'scr-title', api.T('screen.call.title')));
       c.appendChild(api.el('p', 'hint', api.T('screen.call.hint')));
@@ -35,7 +41,7 @@
       var labels = api.T('screen.call.f'), phs = api.T('screen.call.fPh');
       var inputs = [];
       for(var i = 0; i < 4; i++){
-        var f = P.field(api, { label:labels[i], ph:phs[i], value:vals[i], id:'call-f' + i, cls:'call-input' });
+        var f = P.field(api, { label:labels[i], ph:phs[i], value:vals[i], id:'call-f' + i, cls:'call-input', nodirty:true });   // 入れるたびに書きかけとして残す
         inputs.push(f.input);
         f.input.addEventListener('input', function(){ api.save(DRAFT, { f:inputs.map(function(x){ return x.value; }) }); });
         c.appendChild(f.wrap);

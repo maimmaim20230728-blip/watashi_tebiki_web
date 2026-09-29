@@ -24,7 +24,7 @@
     window.TEBIKI_PARTS.toTop();
     c.appendChild(api.el('h1', 'scr-title', api.T('screen.dict.title')));
     if(api.lang !== 'ja') c.appendChild(api.el('p', 'note', api.T('screen.dict.jaOnly')));
-    var f = window.TEBIKI_PARTS.field(api, { label:api.T('screen.dict.search'), ph:api.T('screen.dict.searchPh'), value:query, id:'dict-q' });
+    var f = window.TEBIKI_PARTS.field(api, { label:api.T('screen.dict.search'), ph:api.T('screen.dict.searchPh'), value:query, id:'dict-q', nodirty:true });   // 検索(保存しない・戻るで確かめない)
     f.input.addEventListener('input', function(){ query = f.input.value.trim(); drawItems(); });
     c.appendChild(f.wrap);
     c.appendChild(window.TEBIKI_PARTS.chips(api, { all:true, value:tag, onPick:function(t){ tag = t; drawItems(); } }));
@@ -95,8 +95,17 @@
     c.appendChild(toScript);
   }
 
+  var box = null;   // いま描いている入れ物(戻るボタン用)
+
   window.SCREENS.register('dict', {
+    /* 戻るボタン(Play版・2026-09-29): 語の詳しい画面なら「‹ もどる」と同じ(一覧へ)。一覧なら来た画面へ */
+    back: function(api){
+      if(!box || !box.querySelector('#dict-back')) return false;
+      openId = null; renderList(box, api);
+      return true;
+    },
     render: function(c, api){
+      box = c;
       var cur = openId ? entries().filter(function(e){ return e.id === openId; })[0] : null;
       if(cur) renderDetail(c, api, cur); else renderList(c, api);
     }

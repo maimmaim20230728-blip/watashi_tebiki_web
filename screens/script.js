@@ -13,6 +13,10 @@
   var filter = 'all';
   var mode = 'list';     // list / form / detail
   var cur = null;        // 編集中・表示中の1件
+  /* 戻るボタン(Play版・2026-09-29) */
+  var box = null;        // いま描いている入れ物
+  var formNow = null;    // 開いているフォーム { changed() }
+  var fromDict = false;  // 辞典の「だいほんを 書く」から来たフォーム(戻る=辞典へ)
 
   /* よみこみ(バックアップ由来の欠けた項目でも落ちないよう整える。id の無い項目には付けて保存し直す) */
   function load(api){
@@ -49,7 +53,7 @@
   }
 
   function renderList(c, api){
-    mode = 'list'; cur = null;
+    mode = 'list'; cur = null; formNow = null;
     var P = window.TEBIKI_PARTS;
     c.textContent = '';
     P.toTop();
@@ -87,8 +91,9 @@
     draw();
   }
 
-  /* vals = 書きかけ({ tag, title, body })があればそれを入れる */
-  function renderForm(c, api, s, vals){
+  /* vals = 書きかけ({ tag, title, body })があればそれを入れる
+     base = 戻るボタンで「書いたことを すてますか」と たずねるかの比べる元(辞典から来た下書き。無ければ 元の台本 か 空) */
+  function renderForm(c, api, s, vals, base){
     mode = 'form'; cur = s;
     var P = window.TEBIKI_PARTS;
     c.textContent = '';
@@ -100,10 +105,13 @@
     sel.id = 'script-tag';
     tagWrap.appendChild(sel);
     c.appendChild(tagWrap);
-    var fName = P.field(api, { label:api.T('screen.script.name'), ph:api.T('screen.script.namePh'), value:vals ? vals.title : (s ? s.title : ''), id:'script-name' });
+    /* 書くたびに書きかけとして残す欄なので nodirty(戻るボタンの確かめは下の formNow.changed で出す) */
+    var fName = P.field(api, { label:api.T('screen.script.name'), ph:api.T('screen.script.namePh'), value:vals ? vals.title : (s ? s.title : ''), id:'script-name', nodirty:true });
     c.appendChild(fName.wrap);
-    var fBody = P.field(api, { label:api.T('screen.script.body'), ph:api.T('screen.script.bodyPh'), value:vals ? vals.body : (s ? s.body : ''), multi:true, rows:6, id:'script-body' });
+    var fBody = P.field(api, { label:api.T('screen.script.body'), ph:api.T('screen.script.bodyPh'), value:vals ? vals.body : (s ? s.body : ''), multi:true, rows:6, id:'script-body', nodirty:true });
     c.appendChild(fBody.wrap);
+    var b0 = base || (s ? { title:s.title, body:s.body } : { title:'', body:'' });
+    formNow = { changed:function(){ return fName.input.value !== b0.title || fBody.input.value !== b0.body; } };
     c.appendChild(api.el('p', 'hint', api.T('common.optional')));
     /* 書きかけを残す(開いた時点と、書くたび・ばめんを変えるたび)
        ・あたらしく書くフォームで まだ何も書いていないときは残さない(離れて戻ったら一覧を見せる) */
@@ -125,15 +133,15 @@
       var item = s ? list.filter(function(x){ return x.id === s.id; })[0] : null;
       if(!item){ item = { id:P.uid() }; list.push(item); }
       item.tag = sel.value; item.title = title; item.body = fBody.input.value; item.updated = Date.now();
-      if(store(api, list)){ api.remove(FORM); api.toast(api.T('common.saved')); renderDetail(c, api, item); }
+      if(store(api, list)){ api.remove(FORM); fromDict = false; api.toast(api.T('common.saved')); renderDetail(c, api, item); }
     });
-    api.Tap.bind(cancel, function(){ api.remove(FORM); if(s) renderDetail(c, api, s); else renderList(c, api); });
+    api.Tap.bind(cancel, function(){ api.remove(FORM); fromDict = false; if(s) renderDetail(c, api, s); else renderList(c, api); });
     row.appendChild(save); row.appendChild(cancel);
     c.appendChild(row);
   }
 
   function renderDetail(c, api, s){
-    mode = 'detail'; cur = s;
+    mode = 'detail'; cur = s; formNow = null;
     var P = window.TEBIKI_PARTS;
     c.textContent = '';
     P.toTop();
@@ -160,12 +168,48 @@
   }
 
   window.SCREENS.register('script', {
+    /* 戻るボタン(Play版・2026-09-29): 画面の中の段を1つ戻す
+       ・「けす」の確かめ中 → いいえ と同じ
+       ・フォーム → やめる と同じ(書きかけを消して 元の台本 か 一覧へ)。書いたことがあれば先に たずねる(やめる=そのまま)。
+         辞典から来たフォームは 辞典へ戻る
+       ・台本を見ている → 「‹ もどる」と同じ(一覧へ) / 一覧 → 来た画面へ */
+    back: function(api){
+      var P = window.TEBIKI_PARTS;
+      if(!box) return false;
+      if(P.disarm(box)) return true;
+      if(mode === 'form' && formNow){
+        /* 書いたことがあれば、アプリの中の確かめの窓(api.ask)で たずねてから(はい=すてる)。いいえ=そのまま */
+        if(formNow.changed()){
+          P.askDiscard(api, function(ok){
+            if(!ok) return;
+            api.remove(FORM);
+            var s2 = cur;
+            formNow = null;
+            if(fromDict){ fromDict = false; mode = 'list'; cur = null; api.backDefault(); return; }
+            if(s2) renderDetail(box, api, s2); else renderList(box, api);
+          });
+          return true;
+        }
+        api.remove(FORM);
+        var s = cur;
+        formNow = null;
+        if(fromDict){ fromDict = false; mode = 'list'; cur = null; return false; }
+        if(s) renderDetail(box, api, s); else renderList(box, api);
+        return true;
+      }
+      if(mode === 'detail'){ renderList(box, api); return true; }
+      return false;
+    },
     render: function(c, api){
+      box = c;
+      fromDict = false;
       /* 辞典からの下書き(読んだら消して、書きかけとして持ち直す) */
       var draft = api.load('draft.script', null);
       if(draft && typeof draft === 'object'){
         api.remove('draft.script');
-        renderForm(c, api, null, cleanForm(draft));
+        var d = cleanForm(draft);
+        fromDict = true;
+        renderForm(c, api, null, d, { title:d.title, body:d.body });
         return;
       }
       /* 書きかけのフォーム(下ナビ・言語切替・再読み込みのあとも同じ中身で開く) */

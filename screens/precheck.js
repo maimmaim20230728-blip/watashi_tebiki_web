@@ -11,6 +11,7 @@
   var say = '';
   var ans = ['', '', '', ''];
   var viewing = null;
+  var box = null;               // いま描いている入れ物(戻るボタン用)
 
   /* よみこみ(バックアップ由来の欠けた項目でも落ちないよう整える。id の無い項目には付けて保存し直す) */
   function load(api){
@@ -46,7 +47,8 @@
     P.toTop();
     c.appendChild(api.el('h1', 'scr-title', api.T('screen.precheck.title')));
     c.appendChild(api.el('p', 'hint', api.T('screen.precheck.hint')));
-    var f = P.field(api, { label:api.T('screen.precheck.say'), ph:api.T('screen.precheck.sayPh'), value:say, multi:true, rows:3, id:'pre-say' });
+    /* 入れるたびに覚える欄(同じ起動中は消えない)なので nodirty(戻るボタンで確かめない) */
+    var f = P.field(api, { label:api.T('screen.precheck.say'), ph:api.T('screen.precheck.sayPh'), value:say, multi:true, rows:3, id:'pre-say', nodirty:true });
     f.input.addEventListener('input', function(){ say = f.input.value; });
     c.appendChild(f.wrap);
     var start = api.el('button', 'btn primary wide', api.T('screen.precheck.start')); start.id = 'pre-start';
@@ -89,7 +91,7 @@
     c.appendChild(api.el('p', 'hint', api.T('screen.precheck.step').replace('{n}', step)));
     c.appendChild(api.el('p', 'note', api.T('screen.precheck.quote').replace('{s}', function(){ return say; })));
     c.appendChild(api.el('h1', 'scr-title', api.T('screen.precheck.q')[i]));
-    var f = P.field(api, { ph:api.T('screen.precheck.qPh')[i], value:ans[i], multi:true, rows:3, hint:api.T('screen.precheck.qHint')[i], id:'pre-a' + step });
+    var f = P.field(api, { ph:api.T('screen.precheck.qPh')[i], value:ans[i], multi:true, rows:3, hint:api.T('screen.precheck.qHint')[i], id:'pre-a' + step, nodirty:true });
     f.input.addEventListener('input', function(){ ans[i] = f.input.value; });
     c.appendChild(f.wrap);
     var row = api.el('div', 'btn-row');
@@ -148,7 +150,26 @@
   }
 
   window.SCREENS.register('precheck', {
+    /* 戻るボタン(Play版・2026-09-29): 画面の中の段を1つ戻す(書いた答えは覚えたまま)
+       ・「けす」の確かめ中 → いいえ と同じ
+       ・問い1〜4 →「‹ まえ」と同じ / 見返し(ほぞん前)→ 問い4 / ほぞんした1件 →「‹ もどる」と同じ / はじめ → 来た画面へ */
+    back: function(api){
+      var P = window.TEBIKI_PARTS;
+      if(!box) return false;
+      if(P.disarm(box)) return true;
+      if(step >= 1 && step <= 4){
+        var a = box.querySelector('#pre-a' + step);
+        if(a) ans[step - 1] = String(a.value || '').trim();
+        step--;
+        if(step < 1) renderStart(box, api); else renderQ(box, api);
+        return true;
+      }
+      if(step === 5){ step = 4; renderQ(box, api); return true; }
+      if(step === 6){ reset(); renderStart(box, api); return true; }
+      return false;
+    },
     render: function(c, api){
+      box = c;
       /* 見ていた1件が もう無い(バックアップの よみこみで入れ替わった等)ときは はじめの画面へ(台本・失敗と次と同じ考え方) */
       if(step === 6 && viewing && !load(api).some(function(x){ return x.id === viewing.id; })) reset();
       if(step >= 1 && step <= 4) renderQ(c, api);

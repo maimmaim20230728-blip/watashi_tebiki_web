@@ -54,6 +54,31 @@ var ja = {
     privacy:'プライバシーポリシー',
     credit:'アプリ開発：介護と支援の相談どころ そよぎ'
   },
+  /* はじめての つかいかた(app.js openGuide・初回に必ず出す・2026-09-30)。heads と bodies は同じ数。
+     ボタンの名前は画面の文字と同じにする(画面の文言を変えたら ここも直す) */
+  guide: {
+    title:'つかいかた', step:'{n} / {m}', start:'はじめる', again:'もういちど 見る',
+    heads:[
+      '場面の手引きへ ようこそ',
+      'ホームと 下の ならび',
+      '言い方の じてん',
+      'じぶんの だいほん',
+      '言う前の てんけん',
+      'あとで 書く(失敗と つぎ)',
+      'いま電話',
+      'この端末の中だけに のこります'
+    ],
+    bodies:[
+      'ばめんに 入る前に 引いて、うまく いかなかった あとに 書く、自分のための 手引きです。\n言葉どおりに 受けとりやすい 人や、人前で 練習せずに 一人で そなえたい 人の ための 道具です。\n責めたり、よい わるいを 決めたりは しません。さいしょに 決めておく ことも ありません。',
+      'ホームの「ばめんを えらぶ」は、場面に 入る前に つかいます。「言い方の じてん」「じぶんの だいほん」「言う前の てんけん」が あります。\n「あとで 書く」は うまく いかなかった あとに、「いま電話」は 電話を 聞きながら つかいます。\n下の ならびの「ばめん」「あとで」「いま電話」からも、おなじ 画面に 行けます。',
+      'よく 聞く 言い方を 引けます。「ことばで さがす」に 書くか、ばめんの ボタンで しぼります。\n言い方を おすと、「言葉どおりの意味」「ありがちな意味(候補)」「たしかめ方の一言」が 出ます。\n意味は 相手や ときによって ちがいます。まよったら 聞いて たしかめるのが いちばんです。\n「この言い方の だいほんを 書く」で、そのまま だいほんを 書きはじめられます。',
+      'ばめんごとに、自分が 言うこと・することを 書きためます。自分で 決めた きまりは「わたしのルール集」に ためます。\n「あたらしく 書く」で ばめん・だい・だいほんを 書いて、「ほぞんする」を おします。\nほぞんした だいほんを ひらいて「大きく 見る」を おすと、その場で 大きな 字で 見られます。',
+      'これから 言うことを 書いて、「てんけんを はじめる」を おします。\n相手・場所・時間・相手は どう感じるか の 4つの 問いに、「つぎ」で じゅんばんに 答えます。決めつけなくて だいじょうぶです。\n「見返す」で 4つの 答えを ならべて 見たら、「ほぞんして おく」か「ほぞんしないで おわる」を えらびます。',
+      'うまく いかなかったことを、責めずに「なにが あった」「あとで 気づいた」「つぎに ためす」「たのめること」の 4つの 段で 残します。\n「あたらしく 書く」で ばめんを えらんで 書き、「ほぞんする」を おします。あとから ばめんの ボタンで しぼって 読み返せます。\n一覧の 下の「文字で 書き出す」で、文字に して コピーできます。他の人の 名前や 会社名は 伏せてから コピーしてください。',
+      '電話を 聞きながら、「だれから」「ようけん」「いつまで」「おりかえし先」の 4つの 欄に 書きます。書いた 字は ほかの 画面に 行っても のこります。\n「大きく 見る」で 大きな 字に、「この電話を のこす」で「さいきんの 電話」に のこせます(5件まで)。\n「欄を からにする」は、つぎに「はい」を おしたときだけ からに なります。\n「聞き返すときの 言い方」は、おすと 大きな 字で 出ます。',
+      '書いたことは すべて この端末の中だけに ほぞんされ、どこにも 送られません。\nあたらしい スマホに うつるときは、「せってい」の「かきだす」で ファイルを ほぞんして、あたらしい スマホで「よみこむ」を おしてください。\n「せってい」の「もじの大きさ」と「いろ」で 見やすく できます。ことばは 画面の いちばん上の「Language」で えらべます。\nこの 案内は、「せってい」の「つかいかた」の「もういちど 見る」で また 見られます。'
+    ]
+  },
   screen: {
     home: {
       title:'場面の手引き',
@@ -180,6 +205,29 @@ var en = {
     note:'Everything you write is stored only on this device. Nothing is sent anywhere.',
     privacy:'Privacy policy',
     credit:'Developed by SOYOGI, a care and support consultation service'
+  },
+  guide: {
+    title:'How to use', step:'{n} / {m}', start:'Start', again:'Show again',
+    heads:[
+      'Welcome to Situation Guide',
+      'Home and the bottom tabs',
+      'Phrase book',
+      'My scripts',
+      'Check before speaking',
+      'Write afterward',
+      'Call now',
+      'Stays on this device only'
+    ],
+    bodies:[
+      'Your own guide to look up before you step into a situation, and to write in after something did not go well.\nIt is a tool for people who tend to take words literally, or who want to prepare alone without practicing in front of others.\nNothing here blames you or judges good or bad. There is nothing you need to set up first.',
+      'On Home, "Choose a situation" is for before you step into a situation. It holds the "Phrase book", "My scripts" and "Check before speaking".\n"Write afterward" is for after something did not go well, and "Call now" is for while you are listening on the phone.\nThe bottom tabs "Situations", "Afterward" and "Call now" open the same screens.',
+      'Look up phrases people often say (in Japanese only), by typing in "Search by word" or with the situation buttons.\nTap a phrase to see its "Literal meaning", "Likely meanings (candidates)" and "One line to check".\nMeanings differ by person and moment. When in doubt, asking is the surest way.\n"Write a script for this phrase" starts a script right away.',
+      'Write what you say and do, per situation. Keep the rules you decided for yourself under "My rules".\nTap "Write a new one", fill in the situation, title and script, then tap "Save".\nOpen a saved script and tap "Show large" to read it in big letters on the spot.',
+      'Write what you are about to say and tap "Start the check".\nWith "Next", answer four questions in order: who, where, when, and how they may feel. No need to be sure.\nTap "Look back" to see the four answers together, then choose "Save this" or "Finish without saving".',
+      'Keep what did not go well in four steps, without blame: "What happened", "What I noticed later", "What to try next" and "What I can ask for".\nTap "Write a new one", choose the situation, write, and tap "Save". Later you can read back by situation.\n"Export as text" under a list lets you copy it as text. Hide other people\'s names and company names before you copy.',
+      'While you listen on the phone, write in the four fields: "From", "Matter", "By when" and "Call back to". What you type stays even if you go to another screen.\n"Show large" shows it in big letters, and "Keep this call" keeps it under "Recent calls" (up to 5).\n"Clear fields" empties the fields only after you also tap "Yes".\nTap one of the "Phrases to ask again" to show it in big letters.',
+      'Everything you write is stored only on this device and is never sent anywhere.\nWhen you move to a new phone, tap "Export" in "Settings" to save a file, then tap "Import" on the new phone.\n"Text size" and "Color" in "Settings" make the screen easier to see. Choose a language with "Language" at the top of the screen.\nYou can see this guide again with "Show again" next to "How to use" in "Settings".'
+    ]
   },
   screen: {
     home: {
@@ -374,6 +422,32 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "note": "Alles, was Sie schreiben, wird nur auf diesem Gerät gespeichert. Nichts wird irgendwohin gesendet.",
     "privacy": "Datenschutzerklärung",
     "credit": "Entwickelt von SOYOGI, einer Beratungsstelle für Pflege und Unterstützung"
+  },
+  "guide": {
+    "title": "Anleitung",
+    "step": "{n} / {m}",
+    "start": "Starten",
+    "again": "Noch einmal ansehen",
+    "heads": [
+      "Willkommen beim Situationsleitfaden",
+      "Start und die untere Leiste",
+      "Wörterbuch der Ausdrücke",
+      "Meine Skripte",
+      "Check vor dem Sprechen",
+      "Später aufschreiben",
+      "Am Telefon",
+      "Nur auf diesem Gerät"
+    ],
+    "bodies": [
+      "Ihr eigener Leitfaden: zum Nachschlagen, bevor eine Situation beginnt, und zum Aufschreiben, wenn etwas nicht gut lief.\nEr ist ein Werkzeug für Menschen, die Worte leicht wörtlich nehmen oder sich lieber allein vorbereiten, ohne vor anderen zu üben.\nNichts hier macht Vorwürfe oder beurteilt gut und schlecht. Sie müssen vorher nichts einstellen.",
+      "Auf „Start“ ist „Situation wählen“ für die Zeit vor einer Situation. Dort finden Sie „Wörterbuch der Ausdrücke“, „Meine Skripte“ und „Check vor dem Sprechen“.\n„Später aufschreiben“ ist für danach, wenn etwas nicht gut lief, und „Am Telefon“ für Notizen während eines Anrufs.\nÜber die untere Leiste („Situationen“, „Später“, „Am Telefon“) kommen Sie zu denselben Seiten.",
+      "Schlagen Sie oft gehörte Ausdrücke nach (nur auf Japanisch): über „Nach Wort suchen“ oder mit den Situations-Knöpfen.\nTippen Sie auf einen Ausdruck, dann sehen Sie „Wörtliche Bedeutung“, „Häufige Bedeutung (Möglichkeiten)“ und „Ein Satz zum Nachfragen“.\nDie Bedeutung hängt von Person und Moment ab. Im Zweifel fragen Sie am besten nach.\nMit „Skript zu diesem Ausdruck schreiben“ beginnen Sie gleich ein Skript.",
+      "Schreiben Sie für jede Situation auf, was Sie sagen und tun. Regeln, die Sie selbst festgelegt haben, sammeln Sie in „Meine Regeln“.\nTippen Sie auf „Neu schreiben“, füllen Sie Situation, Titel und Skript aus und tippen Sie auf „Speichern“.\nÖffnen Sie ein gespeichertes Skript und tippen Sie auf „Groß anzeigen“, dann können Sie es vor Ort in großer Schrift lesen.",
+      "Schreiben Sie auf, was Sie sagen möchten, und tippen Sie auf „Check starten“.\nBeantworten Sie mit „Weiter“ der Reihe nach vier Fragen: wer, wo, wann und wie es ankommen könnte. Sie müssen sich nicht sicher sein.\nMit „Nachlesen“ sehen Sie die vier Antworten zusammen. Wählen Sie dann „Speichern“ oder „Ohne Speichern beenden“.",
+      "Halten Sie ohne Vorwürfe in vier Schritten fest, was nicht gut lief: „Was ist passiert“, „Was mir später aufgefallen ist“, „Was ich als Nächstes versuche“ und „Worum ich bitten kann“.\nTippen Sie auf „Neu schreiben“, wählen Sie die Situation, schreiben Sie und tippen Sie auf „Speichern“. Später können Sie nach Situation nachlesen.\nMit „Als Text exportieren“ unter der Liste kopieren Sie den Text. Machen Sie vorher Namen anderer Personen und Firmen unkenntlich.",
+      "Schreiben Sie beim Zuhören in die vier Felder: „Von wem“, „Anliegen“, „Bis wann“ und „Rückruf an“. Was Sie schreiben, bleibt auch erhalten, wenn Sie auf eine andere Seite gehen.\n„Groß anzeigen“ zeigt es in großer Schrift, und „Anruf speichern“ legt es unter „Letzte Anrufe“ ab (bis zu 5).\n„Felder leeren“ leert die Felder erst, wenn Sie danach auch auf „Ja“ tippen.\nTippen Sie auf einen der „Sätze zum Nachfragen“, dann erscheint er in großer Schrift.",
+      "Alles, was Sie schreiben, bleibt nur auf diesem Gerät und wird nirgendwohin gesendet.\nBeim Wechsel auf ein neues Smartphone speichern Sie in „Optionen“ mit „Exportieren“ eine Datei und tippen auf dem neuen Gerät auf „Importieren“.\nMit „Schriftgröße“ und „Farbe“ in „Optionen“ wird alles besser lesbar. Die Sprache wählen Sie ganz oben bei „Language“.\nDiese Anleitung öffnen Sie in „Optionen“ bei „Anleitung“ mit „Noch einmal ansehen“ wieder."
+    ]
   },
   "screen": {
     "home": {
@@ -632,6 +706,32 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Politique de confidentialité",
     "credit": "Développé par SOYOGI, service de conseil en aide et en soutien"
   },
+  "guide": {
+    "title": "Mode d'emploi",
+    "step": "{n} / {m}",
+    "start": "Commencer",
+    "again": "Revoir",
+    "heads": [
+      "Bienvenue dans Guide des situations",
+      "L'accueil et les onglets du bas",
+      "Lexique des expressions",
+      "Mes scripts",
+      "Vérification avant de parler",
+      "Écrire après coup",
+      "Au téléphone",
+      "Uniquement sur cet appareil"
+    ],
+    "bodies": [
+      "Votre guide à vous : à consulter avant d'entrer dans une situation, et à remplir quand quelque chose ne s'est pas bien passé.\nC'est un outil pour les personnes qui prennent facilement les mots au pied de la lettre, ou qui veulent se préparer seules, sans s'entraîner devant les autres.\nIci, rien ne vous fait de reproches ni ne juge ce qui est bien ou mal. Il n'y a rien à régler au départ.",
+      "Sur \"Accueil\", \"Choisir une situation\" sert avant d'entrer dans une situation. On y trouve \"Lexique des expressions\", \"Mes scripts\" et \"Vérification avant de parler\".\n\"Écrire après coup\" sert quand quelque chose ne s'est pas bien passé, et \"Au téléphone\" pendant un appel.\nLes onglets du bas \"Situations\", \"Après\" et \"Au téléphone\" ouvrent les mêmes écrans.",
+      "Cherchez des expressions qu'on entend souvent (en japonais seulement), en écrivant dans \"Chercher un mot\" ou avec les boutons de situation.\nTouchez une expression pour voir \"Sens littéral\", \"Sens courants (possibilités)\" et \"Une phrase pour vérifier\".\nLe sens change selon la personne et le moment. En cas de doute, le mieux est de demander pour vérifier.\n\"Écrire un script pour cette expression\" commence tout de suite un script.",
+      "Pour chaque situation, notez ce que vous dites et ce que vous faites. Gardez les règles que vous avez fixées vous-même dans \"Mes règles\".\nTouchez \"Écrire un nouveau script\", remplissez la situation, le titre et le script, puis touchez \"Enregistrer\".\nOuvrez un script enregistré et touchez \"Afficher en grand\" pour le lire en gros caractères sur le moment.",
+      "Écrivez ce que vous allez dire et touchez \"Commencer la vérification\".\nAvec \"Suivant\", répondez dans l'ordre à 4 questions : qui, où, quand, et ce que l'autre peut ressentir. Inutile de trancher.\nTouchez \"Relire\" pour voir les 4 réponses ensemble, puis choisissez \"Enregistrer\" ou \"Terminer sans enregistrer\".",
+      "Notez sans reproches, en 4 étapes, ce qui n'a pas bien marché : \"Ce qui s'est passé\", \"Ce que j'ai remarqué après\", \"À essayer la prochaine fois\" et \"Ce que je peux demander\".\nTouchez \"Écrire une nouvelle note\", choisissez la situation, écrivez, puis touchez \"Enregistrer\". Vous pourrez relire plus tard par situation.\n\"Exporter en texte\", sous une liste, permet de copier le texte. Masquez d'abord les noms des autres personnes et des entreprises.",
+      "Pendant l'appel, écrivez dans les 4 champs : \"Qui appelle\", \"Objet\", \"Pour quand\" et \"Pour rappeler\". Ce que vous écrivez reste, même si vous allez sur un autre écran.\n\"Afficher en grand\" l'affiche en gros caractères, et \"Garder cet appel\" le range dans \"Appels récents\" (5 au maximum).\n\"Vider les champs\" ne vide les champs qu'après avoir aussi touché \"Oui\".\nTouchez une des \"Phrases pour faire répéter\" pour l'afficher en gros caractères.",
+      "Tout ce que vous écrivez reste uniquement sur cet appareil et n'est envoyé nulle part.\nPour passer sur un nouveau téléphone, touchez \"Exporter\" dans \"Réglages\" pour enregistrer un fichier, puis touchez \"Importer\" sur le nouveau téléphone.\n\"Taille du texte\" et \"Couleur\" dans \"Réglages\" rendent l'écran plus lisible. La langue se choisit tout en haut de l'écran, avec \"Language\".\nVous pouvez revoir ce guide dans \"Réglages\", avec \"Revoir\" à la ligne \"Mode d'emploi\"."
+    ]
+  },
   "screen": {
     "home": {
       "title": "Guide des situations",
@@ -888,6 +988,32 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "note": "Todo lo que se escribe se guarda solo en este dispositivo. No se envía a ninguna parte.",
     "privacy": "Política de privacidad",
     "credit": "Desarrollo de la aplicación: SOYOGI, espacio de consulta sobre cuidados y apoyo"
+  },
+  "guide": {
+    "title": "Cómo usar",
+    "step": "{n} / {m}",
+    "start": "Empezar",
+    "again": "Ver de nuevo",
+    "heads": [
+      "Qué es Guía de situaciones",
+      "El inicio y las pestañas de abajo",
+      "Diccionario de expresiones",
+      "Mis guiones",
+      "Revisión antes de hablar",
+      "Escribir después",
+      "Al teléfono",
+      "Solo en este dispositivo"
+    ],
+    "bodies": [
+      "Una guía propia para consultar antes de entrar en una situación y para escribir después, cuando algo no salió bien.\nEs una herramienta para quien suele tomar las palabras al pie de la letra, o para quien prefiere prepararse a solas sin ensayar delante de nadie.\nAquí nada culpa ni juzga lo que está bien o mal. No hace falta configurar nada al principio.",
+      "En «Inicio», «Elegir una situación» sirve para antes de entrar en una situación. Ahí están «Diccionario de expresiones», «Mis guiones» y «Revisión antes de hablar».\n«Escribir después» sirve para cuando algo no salió bien, y «Al teléfono», para tomar notas durante una llamada.\nLas pestañas de abajo «Situaciones», «Después» y «Al teléfono» abren las mismas pantallas.",
+      "Aquí se pueden consultar expresiones que se oyen a menudo (solo en japonés), escribiendo en «Buscar por palabra» o con los botones de situación.\nAl tocar una expresión aparecen «Sentido literal», «Sentidos habituales (posibles)» y «Una frase para confirmar».\nEl sentido cambia según la persona y el momento. Ante la duda, lo mejor es preguntar para confirmar.\n«Escribir un guion para esta expresión» empieza un guion directamente.",
+      "Por situación, se anota lo que decir y lo que hacer. Las reglas propias se guardan en «Mis reglas».\nTocar «Escribir uno nuevo», rellenar la situación, el título y el guion, y tocar «Guardar».\nAl abrir un guion guardado y tocar «Ver en grande», se puede leer con letra grande en el momento.",
+      "Escribir lo que se va a decir y tocar «Empezar la revisión».\nCon «Siguiente», responder en orden a 4 preguntas: con quién, dónde, cuándo y cómo puede sentirse la otra persona. No hace falta acertar.\nCon «Repasar» se ven juntas las 4 respuestas. Después, elegir «Guardar esta revisión» o «Terminar sin guardar».",
+      "Guardar lo que no salió bien en 4 partes, sin culpas: «Qué pasó», «Qué se notó después», «Qué probar la próxima vez» y «Qué se puede pedir a otras personas».\nTocar «Escribir uno nuevo», elegir la situación, escribir y tocar «Guardar». Más tarde se puede volver a leer por situación.\nCon «Exportar como texto», debajo de una lista, se puede copiar como texto. Antes, conviene ocultar los nombres de otras personas y de empresas.",
+      "Mientras se escucha la llamada, escribir en los 4 campos: «De quién», «Asunto», «Para cuándo» y «Devolver la llamada a». Lo escrito se mantiene aunque se vaya a otra pantalla.\n«Ver en grande» lo muestra con letra grande, y «Guardar esta llamada» lo deja en «Llamadas recientes» (hasta 5).\n«Vaciar los campos» solo vacía los campos después de tocar también «Sí».\nAl tocar una de las «Frases para pedir que repitan», aparece con letra grande.",
+      "Todo lo que se escribe se guarda solo en este dispositivo y no se envía a ninguna parte.\nAl cambiar a un teléfono nuevo, tocar «Exportar» en «Ajustes» para guardar un archivo y, en el teléfono nuevo, tocar «Importar».\nCon «Tamaño del texto» y «Color» en «Ajustes», la pantalla se ve mejor. El idioma se elige arriba del todo, en «Language».\nEsta guía se puede volver a ver en «Ajustes», con «Ver de nuevo» en la fila «Cómo usar»."
+    ]
   },
   "screen": {
     "home": {
@@ -1146,6 +1272,32 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Informativa sulla privacy",
     "credit": "Sviluppo dell'app: SOYOGI, servizio di consulenza su assistenza e sostegno"
   },
+  "guide": {
+    "title": "Come si usa",
+    "step": "{n} / {m}",
+    "start": "Inizia",
+    "again": "Rivedi",
+    "heads": [
+      "Che cos'è Guida alle situazioni",
+      "La Home e le schede in basso",
+      "Dizionario delle espressioni",
+      "I miei copioni",
+      "Controllo prima di parlare",
+      "Scrivere dopo",
+      "Al telefono",
+      "Solo su questo dispositivo"
+    ],
+    "bodies": [
+      "Una guida personale: da consultare prima di entrare in una situazione e da compilare dopo, quando qualcosa non è andato bene.\nÈ uno strumento per chi tende a prendere le parole alla lettera, o per chi vuole prepararsi in autonomia senza esercitarsi davanti agli altri.\nQui niente La rimprovera né giudica ciò che è giusto o sbagliato. All'inizio non c'è niente da impostare.",
+      "Nella «Home», «Scegliere una situazione» serve prima di entrare in una situazione. Lì trova «Dizionario delle espressioni», «I miei copioni» e «Controllo prima di parlare».\n«Scrivere dopo» serve quando qualcosa non è andato bene, e «Al telefono» per prendere appunti durante una telefonata.\nLe schede in basso «Situazioni», «Dopo» e «Al telefono» aprono le stesse schermate.",
+      "Può cercare espressioni che si sentono spesso (solo in giapponese), scrivendo in «Cerca per parola» o con i pulsanti delle situazioni.\nToccando un'espressione compaiono «Significato letterale», «Significati frequenti (possibili)» e «Una frase per chiedere conferma».\nIl significato cambia a seconda della persona e del momento. Nel dubbio, la cosa migliore è chiedere.\n«Scrivere un copione per questa espressione» avvia subito un copione.",
+      "Per ogni situazione, annoti ciò che dice e ciò che fa. Le regole che ha deciso Lei vanno in «Le mie regole».\nTocchi «Nuovo copione», compili situazione, titolo e copione, poi tocchi «Salva».\nApra un copione salvato e tocchi «Vedere in grande» per leggerlo a caratteri grandi sul momento.",
+      "Scriva ciò che sta per dire e tocchi «Iniziare il controllo».\nCon «Avanti» risponda in ordine a 4 domande: chi, dove, quando e come potrebbe sentirsi l'altra persona. Non serve esserne certi.\nCon «Rileggere» vede insieme le 4 risposte. Poi scelga «Salvare» o «Finire senza salvare».",
+      "Annoti in 4 parti, senza colpevolizzarsi, ciò che non è andato bene: «Cosa è successo», «Cosa ho notato dopo», «Cosa provare la prossima volta» e «Cosa posso chiedere agli altri».\nTocchi «Nuova nota», scelga la situazione, scriva e tocchi «Salva». Più tardi potrà rileggere per situazione.\nCon «Esporta come testo», sotto un elenco, può copiare il testo. Prima nasconda i nomi di altre persone e delle aziende.",
+      "Mentre ascolta la telefonata, scriva nei 4 campi: «Chi chiama», «Motivo», «Entro quando» e «Richiamare a». Ciò che scrive resta anche se passa a un'altra schermata.\n«Vedere in grande» lo mostra a caratteri grandi, e «Conservare questa telefonata» lo tiene in «Telefonate recenti» (fino a 5).\n«Svuotare i campi» svuota i campi solo dopo che ha toccato anche «Sì».\nToccando una delle «Frasi per chiedere di ripetere», compare a caratteri grandi.",
+      "Tutto ciò che scrive viene salvato solo su questo dispositivo e non viene inviato da nessuna parte.\nQuando passa a un nuovo telefono, in «Opzioni» tocchi «Esporta» per salvare un file, poi sul nuovo telefono tocchi «Importa».\nCon «Grandezza del testo» e «Colore» in «Opzioni» lo schermo diventa più leggibile. La lingua si sceglie in alto, con «Language».\nPuò rivedere questa guida in «Opzioni», con «Rivedi» alla voce «Come si usa»."
+    ]
+  },
   "screen": {
     "home": {
       "title": "Guida alle situazioni",
@@ -1402,6 +1554,32 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "note": "Tudo o que for escrito fica guardado apenas neste dispositivo. Nada é enviado para nenhum lugar.",
     "privacy": "Política de privacidade",
     "credit": "Desenvolvido por SOYOGI, espaço de aconselhamento sobre cuidados e apoio"
+  },
+  "guide": {
+    "title": "Como usar",
+    "step": "{n} / {m}",
+    "start": "Começar",
+    "again": "Ver de novo",
+    "heads": [
+      "O que é o Guia de situações",
+      "O início e as abas de baixo",
+      "Dicionário de expressões",
+      "Meus roteiros",
+      "Verificação antes de falar",
+      "Escrever depois",
+      "Ao telefone",
+      "Só neste dispositivo"
+    ],
+    "bodies": [
+      "Um guia feito para si mesmo: para abrir antes de entrar numa situação e para escrever depois, quando algo não correu bem.\nÉ uma ferramenta para quem costuma entender as palavras ao pé da letra, ou para quem prefere preparar-se sozinho, sem ensaiar na frente dos outros.\nAqui nada culpa nem julga o que é certo ou errado. Não é preciso configurar nada no começo.",
+      "Em \"Início\", \"Escolher uma situação\" serve para antes de entrar numa situação. Ali estão \"Dicionário de expressões\", \"Meus roteiros\" e \"Verificação antes de falar\".\n\"Escrever depois\" serve para quando algo não correu bem, e \"Ao telefone\", para anotar durante uma chamada.\nAs abas de baixo \"Situações\", \"Depois\" e \"Ao telefone\" abrem as mesmas páginas.",
+      "Aqui é possível procurar expressões que se ouvem com frequência (apenas em japonês), escrevendo em \"Procurar por palavra\" ou com os botões de situação.\nAo tocar numa expressão, aparecem \"Sentido literal\", \"Sentidos prováveis (possibilidades)\" e \"Uma frase para confirmar\".\nO sentido muda conforme a pessoa e o momento. Na dúvida, o melhor é perguntar e confirmar.\n\"Escrever um roteiro para esta expressão\" começa logo um roteiro.",
+      "Por situação, ir anotando o que dizer e o que fazer. As regras que cada um cria para si ficam em \"Minhas regras\".\nTocar em \"Escrever um novo\", preencher a situação, o título e o roteiro, e tocar em \"Guardar\".\nAo abrir um roteiro guardado e tocar em \"Ver ampliado\", é possível lê-lo em letra grande na hora.",
+      "Escrever o que se vai dizer e tocar em \"Começar a verificação\".\nCom \"Seguinte\", responder por ordem às 4 perguntas: quem, onde, quando e o que a outra pessoa pode sentir. Não é preciso ter certeza.\nCom \"Rever\", as 4 respostas aparecem juntas. Depois, escolher \"Guardar\" ou \"Terminar sem guardar\".",
+      "Anotar o que não funcionou em 4 partes, sem culpas: \"O que aconteceu\", \"O que percebi depois\", \"O que tentar a seguir\" e \"O que posso pedir\".\nTocar em \"Escrever uma nova\", escolher a situação, escrever e tocar em \"Guardar\". Depois, é possível reler por situação.\nCom \"Exportar como texto\", debaixo de uma lista, é possível copiar o texto. Antes, ocultar nomes de outras pessoas e de empresas.",
+      "Durante a chamada, escrever nos 4 campos: \"Quem ligou\", \"Assunto\", \"Até quando\" e \"Ligar de volta para\". O que se escreve fica guardado mesmo ao ir para outra página.\n\"Ver ampliado\" mostra em letra grande, e \"Guardar esta chamada\" deixa em \"Chamadas recentes\" (até 5).\n\"Limpar os campos\" só limpa depois de tocar também em \"Sim\".\nAo tocar numa das \"Frases para pedir que repitam\", ela aparece em letra grande.",
+      "Tudo o que for escrito fica guardado apenas neste dispositivo e não é enviado para nenhum lugar.\nAo mudar para um telefone novo, tocar em \"Exportar\" em \"Ajustes\" para guardar os dados e, depois, tocar em \"Importar\" no telefone novo.\nCom \"Tamanho do texto\" e \"Cor\" em \"Ajustes\", fica mais fácil de ler. O idioma é escolhido bem no alto, em \"Language\".\nEste guia pode ser visto de novo em \"Ajustes\", com \"Ver de novo\" na linha \"Como usar\"."
+    ]
   },
   "screen": {
     "home": {
@@ -1660,6 +1838,32 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "Privacybeleid",
     "credit": "App ontwikkeld door SOYOGI, een adviespunt voor zorg en ondersteuning"
   },
+  "guide": {
+    "title": "Uitleg",
+    "step": "{n} / {m}",
+    "start": "Beginnen",
+    "again": "Opnieuw bekijken",
+    "heads": [
+      "Welkom bij de Situatiegids",
+      "Start en de tabs onderaan",
+      "Woordenboek van uitdrukkingen",
+      "Mijn draaiboeken",
+      "Check vóór het spreken",
+      "Achteraf opschrijven",
+      "Aan de telefoon",
+      "Alleen op dit apparaat"
+    ],
+    "bodies": [
+      "Een gids voor uzelf: om na te slaan voordat u een situatie ingaat, en om in te schrijven als iets niet goed ging.\nHet is een hulpmiddel voor mensen die woorden snel letterlijk nemen, of die zich liever alleen voorbereiden zonder te oefenen waar anderen bij zijn.\nNiets hier geeft u de schuld of beoordeelt wat goed of fout is. U hoeft vooraf niets in te stellen.",
+      "Op \"Start\" is \"Kies een situatie\" voor vóór een situatie. Daar staan \"Woordenboek van uitdrukkingen\", \"Mijn draaiboeken\" en \"Check vóór het spreken\".\n\"Achteraf opschrijven\" is voor als iets niet goed ging, en \"Aan de telefoon\" voor aantekeningen tijdens een gesprek.\nDe tabs onderaan (\"Situaties\", \"Achteraf\", \"Aan de telefoon\") openen dezelfde schermen.",
+      "Zoek uitdrukkingen op die u vaak hoort (alleen in het Japans), via \"Zoeken op woord\" of met de situatieknoppen.\nTik op een uitdrukking voor \"Letterlijke betekenis\", \"Wat vaak bedoeld wordt (mogelijkheden)\" en \"Eén zin om het na te vragen\".\nDe betekenis verschilt per persoon en per moment. Twijfelt u? Dan kunt u het het beste even navragen.\nMet \"Een draaiboek schrijven voor deze uitdrukking\" begint u meteen een draaiboek.",
+      "Schrijf per situatie op wat u zegt en doet. Regels die u zelf hebt bedacht, bewaart u bij \"Mijn regels\".\nTik op \"Iets nieuws schrijven\", vul situatie, titel en draaiboek in en tik op \"Opslaan\".\nOpen een opgeslagen draaiboek en tik op \"Groot tonen\" om het ter plekke in grote letters te lezen.",
+      "Schrijf op wat u gaat zeggen en tik op \"Check beginnen\".\nBeantwoord met \"Volgende\" vier vragen op volgorde: wie, waar, wanneer en hoe de ander zich kan voelen. U hoeft het niet zeker te weten.\nMet \"Teruglezen\" ziet u de vier antwoorden bij elkaar. Kies daarna \"Dit opslaan\" of \"Stoppen zonder opslaan\".",
+      "Schrijf zonder uzelf de schuld te geven in vier stappen op wat niet goed ging: \"Wat er gebeurde\", \"Wat ik later merkte\", \"Wat ik de volgende keer probeer\" en \"Waar ik om kan vragen\".\nTik op \"Iets nieuws schrijven\", kies de situatie, schrijf en tik op \"Opslaan\". Later kunt u per situatie teruglezen.\nMet \"Als tekst exporteren\" onder een lijst kunt u de tekst kopiëren. Maak namen van anderen en bedrijfsnamen eerst onherkenbaar.",
+      "Schrijf tijdens het gesprek in de vier velden: \"Van wie\", \"Waarover\", \"Uiterlijk wanneer\" en \"Terugbellen naar\". Wat u typt, blijft staan, ook als u naar een ander scherm gaat.\n\"Groot tonen\" laat het in grote letters zien, en \"Dit gesprek bewaren\" zet het bij \"Recente gesprekken\" (maximaal 5).\n\"Velden leegmaken\" maakt de velden pas leeg als u daarna ook op \"Ja\" tikt.\nTik op een van de \"Zinnen om iets opnieuw te vragen\" om die in grote letters te tonen.",
+      "Alles wat u schrijft, wordt alleen op dit apparaat bewaard en nergens naartoe gestuurd.\nStapt u over op een nieuwe telefoon? Tik dan bij \"Instellingen\" op \"Exporteren\" om een bestand op te slaan, en tik op de nieuwe telefoon op \"Importeren\".\nMet \"Tekstgrootte\" en \"Kleur\" bij \"Instellingen\" wordt het scherm beter leesbaar. De taal kiest u helemaal bovenaan bij \"Language\".\nU kunt deze uitleg opnieuw bekijken bij \"Instellingen\", met \"Opnieuw bekijken\" naast \"Uitleg\"."
+    ]
+  },
   "screen": {
     "home": {
       "title": "Situatiegids",
@@ -1916,6 +2120,32 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "note": "Allt du skriver sparas bara på den här enheten. Inget skickas någonstans.",
     "privacy": "Integritetspolicy",
     "credit": "Utvecklad av SOYOGI, en rådgivningstjänst för omsorg och stöd"
+  },
+  "guide": {
+    "title": "Så fungerar appen",
+    "step": "{n} / {m}",
+    "start": "Börja",
+    "again": "Visa igen",
+    "heads": [
+      "Välkommen till Situationsguide",
+      "Hem och flikarna längst ner",
+      "Ordbok för uttryck",
+      "Mina manus",
+      "Koll innan du säger något",
+      "Skriv efteråt",
+      "Samtal nu",
+      "Bara på den här enheten"
+    ],
+    "bodies": [
+      "Din egen guide: att titta i innan du går in i en situation, och att skriva i när något inte gick bra.\nDen är ett verktyg för dig som lätt tar ord bokstavligt, eller som vill förbereda dig på egen hand utan att öva inför andra.\nInget här klandrar dig eller bedömer vad som är bra eller dåligt. Du behöver inte ställa in något först.",
+      "På ”Hem” är ”Välj situation” till för innan du går in i en situation. Där finns ”Ordbok för uttryck”, ”Mina manus” och ”Koll innan du säger något”.\n”Skriv efteråt” är till för när något inte gick bra, och ”Samtal nu” för anteckningar medan du pratar i telefon.\nFlikarna längst ner, ”Situationer”, ”Efteråt” och ”Samtal nu”, öppnar samma skärmar.",
+      "Slå upp uttryck som man ofta hör (bara på japanska), genom att skriva i ”Sök på ord” eller med situationsknapparna.\nTryck på ett uttryck för att se ”Ordagrann betydelse”, ”Vanliga betydelser (förslag)” och ”En mening för att kolla”.\nBetydelsen kan skilja sig beroende på person och tillfälle. Om du är osäker är det bäst att fråga och kolla.\nMed ”Skriv ett manus för det här uttrycket” börjar du direkt på ett manus.",
+      "Skriv ner vad du säger och gör, för varje situation. Regler som du själv har bestämt samlar du under ”Mina regler”.\nTryck på ”Skriv nytt”, fyll i situation, titel och manus och tryck på ”Spara”.\nÖppna ett sparat manus och tryck på ”Visa stort” för att läsa det med stor text på plats.",
+      "Skriv vad du tänker säga och tryck på ”Starta kollen”.\nSvara med ”Nästa” på fyra frågor i tur och ordning: vem, var, när och hur den andra kan uppleva det. Du behöver inte vara säker.\nMed ”Se över” ser du de fyra svaren tillsammans. Välj sedan ”Spara den här” eller ”Avsluta utan att spara”.",
+      "Skriv ner det som inte gick bra i fyra steg, utan att klandra någon: ”Vad hände”, ”Vad jag märkte efteråt”, ”Vad jag provar nästa gång” och ”Vad jag kan be någon om”.\nTryck på ”Skriv nytt”, välj situation, skriv och tryck på ”Spara”. Senare kan du läsa igen per situation.\nMed ”Exportera som text” under en lista kan du kopiera texten. Dölj andras namn och företagsnamn innan du kopierar.",
+      "Skriv i de fyra fälten medan du lyssnar i telefon: ”Från vem”, ”Ärende”, ”Till när” och ”Ring tillbaka till”. Det du skriver finns kvar även om du går till en annan skärm.\n”Visa stort” visar det med stor text, och ”Spara samtalet” lägger det under ”Senaste samtal” (upp till 5).\n”Töm fälten” tömmer fälten först när du också har tryckt på ”Ja”.\nTryck på en av ”Fraser för att fråga igen” för att visa den med stor text.",
+      "Allt du skriver sparas bara på den här enheten och skickas ingenstans.\nNär du byter till en ny telefon: tryck på ”Exportera” i ”Alternativ” för att spara en fil, och tryck sedan på ”Importera” på den nya telefonen.\nMed ”Textstorlek” och ”Färg” i ”Alternativ” blir skärmen lättare att läsa. Språket väljer du längst upp vid ”Language”.\nDu kan se den här guiden igen i ”Alternativ”, med ”Visa igen” vid ”Så fungerar appen”."
+    ]
   },
   "screen": {
     "home": {
@@ -2174,6 +2404,32 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "개인정보 처리방침",
     "credit": "앱 개발: 돌봄과 지원 상담소 SOYOGI"
   },
+  "guide": {
+    "title": "사용법",
+    "step": "{n} / {m}",
+    "start": "시작하기",
+    "again": "다시 보기",
+    "heads": [
+      "상황별 길잡이에 어서 오세요",
+      "홈과 아래쪽 탭",
+      "표현 사전",
+      "나의 대본",
+      "말하기 전 점검",
+      "나중에 쓰기(실패와 다음)",
+      "지금 전화",
+      "이 기기 안에만 남아요"
+    ],
+    "bodies": [
+      "장면에 들어가기 전에 펼쳐 보고, 잘 안 된 뒤에 적어 두는, 나를 위한 안내서예요.\n말을 글자 그대로 받아들이기 쉬운 사람이나, 남 앞에서 연습하지 않고 혼자 준비하고 싶은 사람을 위한 도구예요.\n탓하거나 좋고 나쁨을 판정하지 않아요. 처음에 정해 둘 것도 없어요.",
+      "홈의 ‘장면 고르기’는 장면에 들어가기 전에 써요. ‘표현 사전’, ‘나의 대본’, ‘말하기 전 점검’이 있어요.\n‘나중에 쓰기’는 잘 안 된 뒤에, ‘지금 전화’는 전화를 들으면서 써요.\n아래쪽 탭의 ‘장면’, ‘나중에’, ‘지금 전화’에서도 같은 화면으로 갈 수 있어요.",
+      "자주 듣는 표현을 ‘단어로 찾기’나 장면 버튼으로 찾아볼 수 있어요(일본어만).\n표현을 누르면 ‘말 그대로의 뜻’, ‘흔히 담긴 뜻(후보)’, ‘확인할 때 쓰는 한마디’가 나와요.\n뜻은 상대나 때에 따라 달라요. 헷갈리면 물어서 확인하는 것이 가장 좋아요.\n‘이 표현의 대본 쓰기’로 바로 대본을 쓰기 시작할 수 있어요.",
+      "장면별로 내가 할 말과 할 일을 적어 둬요. 스스로 정한 규칙은 ‘나의 규칙집’에 모아요.\n‘새로 쓰기’를 누르고 장면, 제목, 대본을 쓴 뒤 ‘저장’을 눌러요.\n저장한 대본을 열고 ‘크게 보기’를 누르면 그 자리에서 큰 글자로 볼 수 있어요.",
+      "지금부터 할 말을 쓰고 ‘점검 시작하기’를 눌러요.\n‘다음’으로 4가지 물음(상대 · 장소 · 시간 · 상대는 어떻게 느낄까)에 차례대로 답해요. 단정하지 않아도 괜찮아요.\n‘돌아보기’로 4가지 답을 모아 본 뒤, ‘저장해 두기’나 ‘저장하지 않고 끝내기’를 골라요.",
+      "잘 안 된 일을 탓하지 않고 ‘무슨 일이 있었나’, ‘나중에 알아챈 것’, ‘다음에 해 볼 것’, ‘부탁할 수 있는 것’의 4단계로 남겨요.\n‘새로 쓰기’로 장면을 골라 쓰고 ‘저장’을 눌러요. 나중에 장면 버튼으로 좁혀서 다시 읽을 수 있어요.\n목록 아래의 ‘글자로 내보내기’로 글자로 복사할 수 있어요. 다른 사람의 이름이나 회사 이름은 가린 뒤에 복사해 주세요.",
+      "전화를 들으면서 ‘누구에게서’, ‘용건’, ‘언제까지’, ‘회신할 곳’ 4개의 칸에 써요. 쓴 글자는 다른 화면에 가도 남아요.\n‘크게 보기’로 큰 글자로 보고, ‘이 전화 남기기’로 ‘최근 전화’에 남길 수 있어요(5건까지).\n‘칸 비우기’는 이어서 ‘네’를 눌렀을 때만 칸이 비워져요.\n‘되물을 때 쓰는 말’은 누르면 큰 글자로 나와요.",
+      "쓴 내용은 모두 이 기기 안에만 저장되고, 어디로도 보내지지 않아요.\n새 스마트폰으로 옮길 때는 ‘설정’의 ‘내보내기’로 파일을 저장한 뒤, 새 스마트폰에서 ‘불러오기’를 눌러 주세요.\n‘설정’의 ‘글자 크기’와 ‘색’으로 보기 편하게 할 수 있어요. 언어는 화면 맨 위의 ‘Language’에서 골라요.\n이 안내는 ‘설정’의 ‘사용법’에서 ‘다시 보기’를 누르면 다시 볼 수 있어요."
+    ]
+  },
   "screen": {
     "home": {
       "title": "상황별 길잡이",
@@ -2431,6 +2687,32 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "privacy": "隐私政策",
     "credit": "应用开发：护理与支援咨询处 SOYOGI"
   },
+  "guide": {
+    "title": "使用方法",
+    "step": "{n} / {m}",
+    "start": "开始",
+    "again": "再看一次",
+    "heads": [
+      "欢迎使用场合指南",
+      "首页和下方的标签",
+      "说法词典",
+      "我的台本",
+      "说之前的检查",
+      "事后记下(失败与下一步)",
+      "通话中",
+      "只保存在这台设备里"
+    ],
+    "bodies": [
+      "这是写给自己的指南：进入场景之前翻一翻，没做好之后记下来。\n它是为容易按字面理解话语的人，或想不在别人面前练习、一个人做准备的人准备的工具。\n这里不责备，也不评判好坏。一开始也不需要做任何设置。",
+      "首页的“选择场景”在进入场景之前使用，里面有“说法词典”“我的台本”“说之前的检查”。\n“事后记下”在没做好之后使用，“通话中”在边听电话边记录时使用。\n从下方标签的“场景”“事后”“通话中”也能去同样的画面。",
+      "可以用“按词语搜索”或场景按钮，查找常听到的说法(仅日语)。\n点一个说法，会显示“字面意思”“常见含义(候选)”“用来确认的一句话”。\n意思会因对方和时机而不同。拿不准时，问一问、确认一下是最好的。\n点“为这个说法写台本”，可以直接开始写台本。",
+      "按场景记下自己要说的话、要做的事。自己定下的规则，收集在“我的规则集”里。\n点“写新的”，填好场景、标题和台本，再点“保存”。\n打开保存的台本，点“放大查看”，就能当场用大字看。",
+      "写下接下来要说的话，然后点“开始检查”。\n用“下一步”按顺序回答4个问题：对方、地点、时间、对方会有什么感受。不用下定论也没关系。\n点“回看”一起看4个答案，然后选择“保存下来”或“不保存，直接结束”。",
+      "把没做好的事，不带责备地分“发生了什么”“事后注意到的”“下次试试”“可以请人帮忙的事”4栏记下来。\n点“写新的”，选好场景后书写，再点“保存”。之后可以用场景按钮筛选回看。\n用列表下方的“导出为文字”，可以把内容复制成文字。请先把别人的名字、公司名等隐去再复制。",
+      "边听电话边填“谁打来”“什么事”“期限”“回电给谁”4栏。写下的字，去别的画面也会保留。\n点“放大查看”用大字显示，点“保存这通电话”留在“最近的电话”里(最多5条)。\n“清空各栏”要再点一次“是”才会清空。\n点“请对方再说一遍时的说法”里的一句，会用大字显示。",
+      "写下的内容全部只保存在这台设备里，不会发送到任何地方。\n换新手机时，请先在“设置”里点“导出”保存文件，再在新手机上点“导入”。\n用“设置”里的“文字大小”和“颜色”，可以让画面更容易看。语言可以在画面最上方的“Language”中选择。\n这份说明可以在“设置”的“使用方法”里点“再看一次”重新查看。"
+    ]
+  },
   "screen": {
     "home": {
       "title": "场合指南",
@@ -2687,6 +2969,32 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
     "note": "كل ما يُكتب يُحفظ على هذا الجهاز فقط، ولا يُرسَل إلى أي مكان.",
     "privacy": "سياسة الخصوصية",
     "credit": "تطوير التطبيق: SOYOGI، مساحة للاستشارة في الرعاية والدعم"
+  },
+  "guide": {
+    "title": "طريقة الاستخدام",
+    "step": "{n} / {m}",
+    "start": "ابدأ",
+    "again": "عرض مرة أخرى",
+    "heads": [
+      "مرحبًا بك في دليل المواقف",
+      "الرئيسية والتبويبات في الأسفل",
+      "قاموس العبارات",
+      "سيناريوهاتي",
+      "المراجعة قبل الكلام",
+      "الكتابة لاحقًا",
+      "أثناء المكالمة",
+      "في هذا الجهاز فقط"
+    ],
+    "bodies": [
+      "دليلك الخاص: ترجع إليه قبل الدخول في موقف، وتكتب فيه بعد أن لا يسير أمر ما على ما يرام.\nهو أداة لمن يميل إلى فهم الكلام حرفيًّا، أو لمن يريد الاستعداد بمفرده دون التدرّب أمام الآخرين.\nلا شيء هنا يلومك أو يحكم على الصواب والخطأ. ولا تحتاج إلى ضبط أي شيء في البداية.",
+      "في «الرئيسية»، «اختيار موقف» لما قبل الدخول في موقف، وفيه «قاموس العبارات» و«سيناريوهاتي» و«المراجعة قبل الكلام».\n«الكتابة لاحقًا» لما بعد أن لا يسير أمر ما جيدًا، و«أثناء المكالمة» للتدوين وأنت تستمع إلى الهاتف.\nتفتح التبويبات في الأسفل «المواقف» و«لاحقًا» و«أثناء المكالمة» الشاشات نفسها.",
+      "ابحث عن عبارات تُسمع كثيرًا (باللغة اليابانية فقط)، بالكتابة في «البحث بكلمة» أو بأزرار المواقف.\nاضغط على عبارة لترى «المعنى الحرفي» و«المعاني الشائعة (احتمالات)» و«عبارة قصيرة للتأكد».\nيختلف المعنى بحسب الشخص والوقت. عند التردد، يبقى السؤال للتأكد هو أفضل طريقة.\nيبدأ «كتابة سيناريو لهذه العبارة» سيناريو جديدًا مباشرة.",
+      "اكتب لكل موقف ما تقوله وما تفعله. واجمع القواعد التي قررتها لنفسك في «مجموعة قواعدي».\nاضغط «كتابة جديدة»، واملأ الموقف والعنوان والسيناريو، ثم اضغط «حفظ».\nافتح سيناريو محفوظًا واضغط «عرض بحجم كبير» لتقرأه بخط كبير في مكانه.",
+      "اكتب ما تنوي قوله، ثم اضغط «بدء المراجعة».\nأجب بالترتيب عن 4 أسئلة بالضغط على «التالي»: الطرف الآخر، المكان، الوقت، كيف قد يشعر الطرف الآخر. لا حاجة إلى الجزم.\nاضغط «إعادة النظر» لترى الإجابات الأربع معًا، ثم اختر «حفظ هذه المراجعة» أو «إنهاء دون حفظ».",
+      "سجّل ما لم ينجح دون لوم، في 4 خطوات: «ما الذي حدث» و«ما انتبهتُ إليه لاحقًا» و«ما سأجرّبه في المرة القادمة» و«ما يمكنني طلبه من غيري».\nاضغط «كتابة جديدة»، واختر الموقف واكتب، ثم اضغط «حفظ». ويمكنك لاحقًا القراءة حسب الموقف.\nيتيح «تصدير كنص» أسفل القائمة نسخ المحتوى نصًّا. أخفِ أسماء الآخرين وأسماء الشركات قبل النسخ.",
+      "أثناء الاستماع إلى المكالمة، اكتب في الخانات الأربع: «المتصل» و«الموضوع» و«حتى متى» و«جهة معاودة الاتصال». ما تكتبه يبقى حتى لو انتقلت إلى شاشة أخرى.\nيعرضه «عرض بحجم كبير» بخط كبير، ويحفظه «حفظ هذه المكالمة» في «المكالمات الأخيرة» (حتى 5).\nلا يُفرغ «إفراغ الخانات» الخانات إلا بعد الضغط أيضًا على «نعم».\nاضغط على إحدى «عبارات لطلب الإعادة» لتظهر بخط كبير.",
+      "كل ما تكتبه يُحفظ على هذا الجهاز فقط، ولا يُرسَل إلى أي مكان.\nعند الانتقال إلى هاتف جديد، اضغط «تصدير» في «الإعدادات» لحفظ ملف، ثم اضغط «استيراد» على الهاتف الجديد.\nيجعل «حجم الخط» و«اللون» في «الإعدادات» الشاشة أسهل للقراءة. تُختار اللغة من «Language» في أعلى الشاشة.\nيمكنك عرض هذا الدليل مرة أخرى من «الإعدادات»، بالضغط على «عرض مرة أخرى» بجانب «طريقة الاستخدام»."
+    ]
   },
   "screen": {
     "home": {

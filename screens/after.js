@@ -150,7 +150,7 @@
     var labels = api.T('screen.after.f');
     var blocks = [];
     for(var i = 0; i < 4; i++){
-      var card = api.el('div', 'card' + (i === 2 ? ' tappable' : ''));
+      var card = api.el('div', 'card' + (i === 2 ? ' em' : ''));   // 3(次に試す)は目立たせるだけ(押せない・2026-10-30 まで tappable で押せそうに見えていた)
       card.appendChild(api.el('div', 'show-label', (i + 1) + '. ' + labels[i]));
       card.appendChild(api.el('p', 'pre dict-text', s.f[i] || api.T('screen.after.none')));
       c.appendChild(card);

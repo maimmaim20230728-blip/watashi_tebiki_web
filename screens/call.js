@@ -51,7 +51,12 @@
 
       var row = api.el('div', 'btn-row');
       var show = api.el('button', 'btn primary', api.T('screen.call.show')); show.id = 'call-show';
-      api.Tap.bind(show, function(){ P.overlay(api, { head:api.T('screen.call.title'), blocks:blocks(current()) }); });
+      api.Tap.bind(show, function(){
+        var fv = current();
+        /* 欄が全部空のまま見せると、見出しと「とじる」だけの白い画面になる(2026-10-30)。ほぞんと同じ案内を出す */
+        if(!fv.some(function(x){ return x; })){ api.toast(api.T('screen.call.needAny')); return; }
+        P.overlay(api, { head:api.T('screen.call.title'), blocks:blocks(fv) });
+      });
       var save = api.el('button', 'btn primary', api.T('screen.call.save')); save.id = 'call-save';
       api.Tap.bind(save, function(){
         var fv = current();

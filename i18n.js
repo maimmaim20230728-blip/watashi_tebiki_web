@@ -103,7 +103,8 @@ var ja = {
       jaOnly:'この じてんは 日本語だけです。',
       noHit:'見つかりませんでした。べつの ことばで さがしてみてください。',
       toScript:'この言い方の だいほんを 書く',
-      draftTitle:'「{w}」と言われたとき'
+      draftTitle:'「{w}」と言われたとき',
+      overwriteAsk:'書きかけの だいほんが あります。すてて、この言い方の だいほんを 書きますか?'
     },
     script: {
       title:'じぶんの だいほん',
@@ -253,7 +254,8 @@ var en = {
       jaOnly:'This phrase book is in Japanese only.',
       noHit:'No match. Try another word.',
       toScript:'Write a script for this phrase',
-      draftTitle:'When someone says "{w}"'
+      draftTitle:'When someone says "{w}"',
+      overwriteAsk:'You have a script you have not saved yet. Discard it and write a script for this phrase?'
     },
     script: {
       title:'My scripts',
@@ -483,7 +485,8 @@ TBL.de = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "Dieses Wörterbuch gibt es nur auf Japanisch.",
       "noHit": "Nichts gefunden. Versuchen Sie es bitte mit einem anderen Wort.",
       "toScript": "Skript zu diesem Ausdruck schreiben",
-      "draftTitle": "Wenn jemand „{w}“ sagt"
+      "draftTitle": "Wenn jemand „{w}“ sagt",
+      "overwriteAsk": "Sie haben ein Skript, das noch nicht gespeichert ist. Verwerfen und ein Skript zu diesem Ausdruck schreiben?"
     },
     "script": {
       "title": "Meine Skripte",
@@ -766,7 +769,8 @@ TBL.fr = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "Ce lexique existe en japonais seulement.",
       "noHit": "Aucun résultat. Essayez avec un autre mot.",
       "toScript": "Écrire un script pour cette expression",
-      "draftTitle": "Quand on me dit \"{w}\""
+      "draftTitle": "Quand on me dit \"{w}\"",
+      "overwriteAsk": "Vous avez un script pas encore enregistré. L'abandonner et écrire un script pour cette expression ?"
     },
     "script": {
       "title": "Mes scripts",
@@ -1049,7 +1053,8 @@ TBL.es = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "Este diccionario está solo en japonés.",
       "noHit": "No se encontró nada. Se puede probar con otra palabra.",
       "toScript": "Escribir un guion para esta expresión",
-      "draftTitle": "Cuando me dicen «{w}»"
+      "draftTitle": "Cuando me dicen «{w}»",
+      "overwriteAsk": "Tienes un guion sin guardar. ¿Descartarlo y escribir un guion para esta expresión?"
     },
     "script": {
       "title": "Mis guiones",
@@ -1332,7 +1337,8 @@ TBL.it = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "Questo dizionario è solo in giapponese.",
       "noHit": "Nessun risultato. Provi a cercare con un'altra parola.",
       "toScript": "Scrivere un copione per questa espressione",
-      "draftTitle": "Quando mi dicono «{w}»"
+      "draftTitle": "Quando mi dicono «{w}»",
+      "overwriteAsk": "Hai un copione non ancora salvato. Scartarlo e scrivere un copione per questa espressione?"
     },
     "script": {
       "title": "I miei copioni",
@@ -1615,7 +1621,8 @@ TBL.pt = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "Este dicionário existe apenas em japonês.",
       "noHit": "Nada encontrado. Tentar com outra palavra.",
       "toScript": "Escrever um roteiro para esta expressão",
-      "draftTitle": "Quando me dizem \"{w}\""
+      "draftTitle": "Quando me dizem \"{w}\"",
+      "overwriteAsk": "Tem um roteiro ainda não guardado. Descartá-lo e escrever um roteiro para esta expressão?"
     },
     "script": {
       "title": "Meus roteiros",
@@ -1898,7 +1905,8 @@ TBL.nl = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "Dit woordenboek is alleen in het Japans.",
       "noHit": "Niets gevonden. Probeer het met een ander woord.",
       "toScript": "Een draaiboek schrijven voor deze uitdrukking",
-      "draftTitle": "Als iemand \"{w}\" zegt"
+      "draftTitle": "Als iemand \"{w}\" zegt",
+      "overwriteAsk": "Je hebt een draaiboek dat nog niet is opgeslagen. Weggooien en een draaiboek voor deze uitdrukking schrijven?"
     },
     "script": {
       "title": "Mijn draaiboeken",
@@ -2181,7 +2189,8 @@ TBL.sv = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "Den här ordboken finns bara på japanska.",
       "noHit": "Inget hittades. Försök söka med ett annat ord.",
       "toScript": "Skriv ett manus för det här uttrycket",
-      "draftTitle": "När någon säger ”{w}”"
+      "draftTitle": "När någon säger ”{w}”",
+      "overwriteAsk": "Du har ett manus som inte är sparat än. Kasta det och skriva ett manus för det här uttrycket?"
     },
     "script": {
       "title": "Mina manus",
@@ -2464,7 +2473,8 @@ TBL.ko = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "이 사전은 일본어로만 되어 있어요.",
       "noHit": "찾지 못했어요. 다른 단어로 찾아봐 주세요.",
       "toScript": "이 표현의 대본 쓰기",
-      "draftTitle": "‘{w}’라는 말을 들었을 때"
+      "draftTitle": "‘{w}’라는 말을 들었을 때",
+      "overwriteAsk": "아직 저장하지 않은 대본이 있습니다. 버리고 이 표현의 대본을 쓸까요?"
     },
     "script": {
       "title": "나의 대본",
@@ -2747,7 +2757,8 @@ TBL.zh = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "这本词典只有日语。",
       "noHit": "没有找到。请换个词再搜搜看。",
       "toScript": "为这个说法写台本",
-      "draftTitle": "别人说“{w}”的时候"
+      "draftTitle": "别人说“{w}”的时候",
+      "overwriteAsk": "有一份还没保存的台本。要丢弃它，为这个说法写台本吗？"
     },
     "script": {
       "title": "我的台本",
@@ -3030,7 +3041,8 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
       "jaOnly": "هذا القاموس باللغة اليابانية فقط.",
       "noHit": "لم يُعثر على نتيجة. يمكنك تجربة البحث بكلمة أخرى.",
       "toScript": "كتابة سيناريو لهذه العبارة",
-      "draftTitle": "عندما يقول لي أحدهم «{w}»"
+      "draftTitle": "عندما يقول لي أحدهم «{w}»",
+      "overwriteAsk": "لديك سيناريو لم يُحفظ بعد. هل تريد تجاهله وكتابة سيناريو لهذه العبارة؟"
     },
     "script": {
       "title": "سيناريوهاتي",

@@ -11,11 +11,19 @@
   function entries(){ return window.TEBIKI_DICT || []; }
   /* 辞典の中身は日本語: 右から左の言語(ar)でも句読点・かぎかっこが崩れないよう、左から右の日本語として置く */
   function ja(e){ e.setAttribute('lang', 'ja'); e.setAttribute('dir', 'ltr'); return e; }
+  /* 検索の文字をそろえる(2026-10-30): 全角・半角(NFKC)、大文字・小文字、カタカナ→ひらがな、空白を詰める。
+     語の読み(y・ひらがな)も探す相手に入れるので、「けんとう」「ケントウ」でも「検討します」が出る */
+  function norm(t){
+    t = String(t == null ? '' : t);
+    try{ t = t.normalize('NFKC'); }catch(_){}
+    return t.toLowerCase().replace(/[ァ-ヶ]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) - 0x60); }).replace(/\s+/g, '');
+  }
   function hit(e){
     if(tag !== 'all' && e.tags.indexOf(tag) < 0) return false;
     if(!query) return true;
-    var q = query.toLowerCase();
-    var hay = [e.w, e.lit].concat(e.maybe).join(' ').toLowerCase();
+    var q = norm(query);
+    if(!q) return true;
+    var hay = norm([e.w, e.y || '', e.lit].concat(e.maybe).join(' '));
     return hay.indexOf(q) >= 0;
   }
 
@@ -78,7 +86,7 @@
     card2.appendChild(ul);
     c.appendChild(card2);
 
-    var card3 = api.el('div', 'card tappable');
+    var card3 = api.el('div', 'card em');   // 目立たせるだけ(押せない。2026-10-30 まで tappable で押せそうに見えていた)
     card3.appendChild(api.el('div', 'show-label', api.T('screen.dict.ask')));
     card3.appendChild(ja(api.el('p', 'dict-text', e.ask)));
     c.appendChild(card3);
@@ -88,9 +96,16 @@
     var toScript = api.el('button', 'btn wide', api.T('screen.dict.toScript'));
     toScript.id = 'dict-to-script';
     api.Tap.bind(toScript, function(){
-      /* 下書きを渡す(画面同士で状態を共有しないので保存を経由する) */
-      api.save('draft.script', { tag:e.tags[0], title:api.T('screen.dict.draftTitle').replace('{w}', function(){ return e.w; }), body:api.T('screen.dict.ask') + ': ' + e.ask + '\n' });
-      api.go('script');
+      function goWrite(){
+        /* 下書きを渡す(画面同士で状態を共有しないので保存を経由する) */
+        api.save('draft.script', { tag:e.tags[0], title:api.T('screen.dict.draftTitle').replace('{w}', function(){ return e.w; }), body:api.T('screen.dict.ask') + ': ' + e.ask + '\n' });
+        api.go('script');
+      }
+      /* だいほんの書きかけ(draft.scriptForm)があれば、黙って上書きせずに たずねる(2026-10-30)。いいえ=何もしない(書きかけはそのまま) */
+      var form = api.load('draft.scriptForm', null);
+      var writing = form && typeof form === 'object' && (String(form.title || '').trim() || String(form.body || '').trim());
+      if(!writing){ goWrite(); return; }
+      api.ask(api.T('screen.dict.overwriteAsk'), function(ok){ if(ok) goWrite(); }, false);
     });
     c.appendChild(toScript);
   }

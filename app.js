@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.4.8';                // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.4.9';                // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'watashi_tebiki';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'tebiki.';
 var LS_PREF = LS + 'pref.v1';
@@ -529,6 +529,25 @@ function exportBackup(){
    同じアプリのファイルなら、置き換える前に askBox でたずねる(Play版はアプリの中の はい/いいえ の窓・Web版は window.confirm)。
    やめる → 何も変えない / OK → 丸ごと入れ替え(このアプリのキー「tebiki.」でファイルに無いものは消してから書く。
    書きかけの下書きも入れ替わる。ほかのアプリのキーは消さない)。中身の欠けは各画面の load が整える */
+function ownKeys(){
+  var ks = [];
+  for(var i = 0; i < localStorage.length; i++){ var k = localStorage.key(i); if(k && k.indexOf(LS) === 0) ks.push(k); }
+  return ks;
+}
+/* 丸ごと入れ替え。ファイルに無い「tebiki.」のキーを消してから書く。1つでも書けなければ元のキーに全部戻して false
+   ・「つかいかた」を読み終えた印(guide.v1)は書いたものではないので消さない(消すと次の起動で案内がまた出る・2026-09-30) */
+function replaceData(data){
+  var keep = {}, has = Object.prototype.hasOwnProperty;
+  try{ ownKeys().forEach(function(k){ keep[k] = localStorage.getItem(k); }); }catch(_){ return false; }
+  try{
+    for(var k in keep){ if(k !== LS_PREF && k !== LS_GUIDE && !has.call(data, k.slice(LS.length))) localStorage.removeItem(k); }
+    for(var d in data){ if(has.call(data, d) && !saveJSON(LS + d, data[d])) throw new Error('save'); }
+    return true;
+  }catch(_){
+    try{ ownKeys().forEach(function(k){ localStorage.removeItem(k); }); for(var b in keep) localStorage.setItem(b, keep[b]); }catch(__){}
+    return false;
+  }
+}
 function importBackup(e){
   var f = e.target.files && e.target.files[0];
   if(!f) return;
@@ -541,23 +560,13 @@ function importBackup(e){
     }catch(err){ toast(T('set.importFail')); return; }
     askBox(T('set.importConfirm'), function(ok){   // Play版はアプリの中の窓(はい/いいえ)・Web版は window.confirm
       if(!ok) return;
-      try{
-        var src = (d.data && typeof d.data === 'object' && !Array.isArray(d.data)) ? d.data : {};
-        var has = Object.prototype.hasOwnProperty;
-        var drop = [];
-        for(var i = 0; i < localStorage.length; i++){
-          var key = localStorage.key(i);
-          /* 「つかいかた」を読み終えた印(guide.v1)は書いたものではないので消さない(消すと次の起動で案内がまた出る・2026-09-30) */
-          if(key && key.indexOf(LS) === 0 && key !== LS_PREF && key !== LS_GUIDE && !has.call(src, key.slice(LS.length))) drop.push(key);
-        }
-        drop.forEach(removeKey);
-        var failed = 0;
-        for(var k in src){ if(has.call(src, k) && !saveJSON(LS + k, src[k])) failed++; }   // 容量オーバー等は「よみこめませんでした」
-        pref = sanitizePref(d.pref);
-        savePref();
-        applyAll(true);
-        toast(T(failed ? 'set.importFail' : 'set.imported'));
-      }catch(err){ toast(T('set.importFail')); }
+      var src = (d.data && typeof d.data === 'object' && !Array.isArray(d.data)) ? d.data : {};
+      /* 途中で書けなかったら(容量オーバー等)元の「tebiki.」のキーに戻して「よみこめませんでした」(2026-10-30・知って欲しい事ブックと同じ作り) */
+      if(!replaceData(src)){ toast(T('set.importFail')); return; }
+      pref = sanitizePref(d.pref);
+      savePref();
+      applyAll(true);
+      toast(T('set.imported'));
     }, false);
   };
   r.readAsText(f);

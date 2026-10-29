@@ -94,6 +94,8 @@ header#hd{
   padding:12px 14px; margin:0 0 12px;
 }
 .card.tappable{ border-color:var(--brand); }
+/* 目立たせるだけのカード(押せない・2026-10-30): 枠は ふつうの線のまま、はじめの辺だけ太い緑(ボタンの緑の枠と見分ける) */
+.card.em{ border-inline-start:6px solid var(--brand); }
 .row{ display:flex; align-items:center; gap:10px; }
 .row.between{ justify-content:space-between; }
 .btn{

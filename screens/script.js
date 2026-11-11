@@ -39,7 +39,8 @@
   }
   function cleanForm(f){
     return { id:(typeof f.id === 'string') ? f.id : null, tag:(TAGS_ALL.indexOf(f.tag) >= 0) ? f.tag : 'work',
-             title:window.TEBIKI_PARTS.str(f.title), body:window.TEBIKI_PARTS.str(f.body) };
+             title:window.TEBIKI_PARTS.str(f.title), body:window.TEBIKI_PARTS.str(f.body),
+             from:(f.from === 'dict') ? 'dict' : '' };
   }
 
   /* 章の書き出し(いま絞っているタグだけ) */
@@ -117,7 +118,7 @@
        ・あたらしく書くフォームで まだ何も書いていないときは残さない(離れて戻ったら一覧を見せる) */
     function keep(){
       if(!s && !fName.input.value && !fBody.input.value){ api.remove(FORM); return; }
-      api.save(FORM, { id:s ? s.id : null, tag:sel.value, title:fName.input.value, body:fBody.input.value });
+      api.save(FORM, { id:s ? s.id : null, tag:sel.value, title:fName.input.value, body:fBody.input.value, from:(fromDict ? 'dict' : '') });
     }
     fName.input.addEventListener('input', keep);
     fBody.input.addEventListener('input', keep);
@@ -217,6 +218,7 @@
       if(form && typeof form === 'object' && !Array.isArray(form)){
         var f = cleanForm(form);
         var s = f.id ? (load(api).filter(function(x){ return x.id === f.id; })[0] || null) : null;
+        fromDict = (f.from === 'dict');
         renderForm(c, api, s, f);
         return;
       }

@@ -7,6 +7,7 @@
   var query = '';      // 画面を行き来しても検索語は残す(同じ夜に何度も引くため)
   var tag = 'all';
   var openId = null;
+  var recent = [];     // 同じ起動中に見た語の id(新しい順・3件まで。検索語と同じく端末に保存しない・2026-11-11)
 
   function entries(){ return window.TEBIKI_DICT || []; }
   /* 辞典の中身は日本語: 右から左の言語(ar)でも句読点・かぎかっこが崩れないよう、左から右の日本語として置く */
@@ -38,11 +39,36 @@
     c.appendChild(window.TEBIKI_PARTS.chips(api, { all:true, value:tag, onPick:function(t){ tag = t; drawItems(); } }));
     var count = api.el('p', 'hint'); count.id = 'dict-count';
     c.appendChild(count);
+    var rec = api.el('div', 'dict-recent'); rec.id = 'dict-recent';
+    c.appendChild(rec);
     var ul = api.el('ul', 'list'); ul.id = 'dict-list';
     c.appendChild(ul);
     c.appendChild(api.el('p', 'hint', api.T('screen.dict.caution')));
 
+    function drawRecent(){
+      rec.textContent = '';
+      if(query || tag !== 'all' || !recent.length) return;   // 探しているときは一覧だけ
+      rec.appendChild(api.el('div', 'show-label', api.T('screen.dict.recent')));
+      var chips = api.el('div', 'chips');
+      recent.forEach(function(id){
+        var e = entries().filter(function(x){ return x.id === id; })[0];
+        if(!e) return;
+        var b = api.el('button', 'chip', e.w);
+        b.setAttribute('data-id', id);
+        ja(b);
+        api.Tap.bind(b, function(){ openWord(e); });
+        chips.appendChild(b);
+      });
+      rec.appendChild(chips);
+    }
+    function openWord(e){
+      openId = e.id;
+      recent = [e.id].concat(recent.filter(function(x){ return x !== e.id; })).slice(0, 3);
+      renderDetail(c, api, e);
+    }
+
     function drawItems(){
+      drawRecent();
       ul.textContent = '';
       var list = entries().filter(hit);
       count.textContent = api.T('screen.dict.count').replace('{n}', list.length);
@@ -55,7 +81,7 @@
         g.appendChild(ja(api.el('div', 'hint', e.lit)));
         li.appendChild(g);
         li.appendChild(api.el('span', 'hint', '›'));
-        api.Tap.bind(li, function(){ openId = e.id; renderDetail(c, api, e); });
+        api.Tap.bind(li, function(){ openWord(e); });
         ul.appendChild(li);
       });
     }
@@ -73,6 +99,14 @@
     var tags = api.el('div', 'chips');
     e.tags.forEach(function(t){ tags.appendChild(api.el('span', 'chip', api.T('common.tags.' + t))); });
     c.appendChild(tags);
+
+    if(e.s){
+      var sc = api.el('div', 'card');
+      sc.id = 'dict-scene';
+      sc.appendChild(api.el('div', 'show-label', api.T('screen.dict.scene')));
+      sc.appendChild(ja(api.el('p', 'dict-text', e.s)));
+      c.appendChild(sc);
+    }
 
     var card = api.el('div', 'card');
     card.appendChild(api.el('div', 'show-label', api.T('screen.dict.lit')));

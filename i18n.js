@@ -28,7 +28,7 @@ var ja = {
     exp: {
       btn:'文字で 書き出す',
       hint:'他の人の 名前・会社名・電話番号は、ここで 伏せてから コピーしてください。ここで 書きかえても、ほぞんした 中身は かわりません。',
-      copy:'コピーする', copied:'コピーしました ✓',
+      copy:'コピーする', save:'ファイルで ほぞん', copied:'コピーしました ✓',
       copyFail:'コピーできませんでした。文字を えらんで コピーしてください。'
     },
     photo: {
@@ -98,6 +98,7 @@ var ja = {
       title:'言い方の じてん',
       search:'ことばで さがす', searchPh:'たとえば「検討」「また」',
       count:'{n} 語',
+      scene:'こんな ばめんで 聞きます', recent:'さいきん 見た言い方',
       lit:'言葉どおりの意味', maybe:'ありがちな意味(候補)', ask:'たしかめ方の一言',
       caution:'意味は 相手や ときによって ちがいます。ここに あるのは「よくある候補」です。まよったら 聞いて たしかめるのが いちばんです。',
       jaOnly:'この じてんは 日本語だけです。',
@@ -181,7 +182,7 @@ var en = {
     exp: {
       btn:'Export as text',
       hint:'Hide other people\'s names, company names and phone numbers here before you copy. Changes here do not change what you saved.',
-      copy:'Copy', copied:'Copied ✓',
+      copy:'Copy', save:'Save as a file', copied:'Copied ✓',
       copyFail:'Could not copy. Please select the text and copy it.'
     },
     photo: {
@@ -249,6 +250,7 @@ var en = {
       title:'Phrase book',
       search:'Search by word', searchPh:'e.g. 検討',
       count:'{n} entries',
+      scene:'Where you may hear it', recent:'Recently viewed',
       lit:'Literal meaning', maybe:'Likely meanings (candidates)', ask:'One line to check',
       caution:'Meanings differ by person and moment. These are common candidates only. When in doubt, asking is the surest way.',
       jaOnly:'This phrase book is in Japanese only.',
@@ -3162,5 +3164,16 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
 ['de','fr','es','it','pt','nl','sv','ko','zh','ar'].forEach(function(l){
   if(!TBL[l]) TBL[l] = JSON.parse(JSON.stringify(en));
 });
+/* ---- 0.4.12 追加(辞典の場面・さいきん見た言い方・ファイルで ほぞん) ---- */
+mergeDeep(TBL.de, {"screen":{"dict":{"scene":"Wo man das hört","recent":"Zuletzt angesehen"}},"common":{"exp":{"save":"Als Datei speichern"}}});
+mergeDeep(TBL.fr, {"screen":{"dict":{"scene":"Où on l'entend","recent":"Vus récemment"}},"common":{"exp":{"save":"Enregistrer en fichier"}}});
+mergeDeep(TBL.es, {"screen":{"dict":{"scene":"Dónde se oye","recent":"Vistas hace poco"}},"common":{"exp":{"save":"Guardar como archivo"}}});
+mergeDeep(TBL.it, {"screen":{"dict":{"scene":"Dove si sente","recent":"Visti di recente"}},"common":{"exp":{"save":"Salva come file"}}});
+mergeDeep(TBL.pt, {"screen":{"dict":{"scene":"Onde se ouve","recent":"Vistas há pouco"}},"common":{"exp":{"save":"Salvar como arquivo"}}});
+mergeDeep(TBL.nl, {"screen":{"dict":{"scene":"Waar je het hoort","recent":"Onlangs bekeken"}},"common":{"exp":{"save":"Opslaan als bestand"}}});
+mergeDeep(TBL.sv, {"screen":{"dict":{"scene":"Var man hör det","recent":"Nyligen visade"}},"common":{"exp":{"save":"Spara som fil"}}});
+mergeDeep(TBL.ko, {"screen":{"dict":{"scene":"이런 때 들어요","recent":"최근에 본 말"}},"common":{"exp":{"save":"파일로 저장"}}});
+mergeDeep(TBL.zh, {"screen":{"dict":{"scene":"常在这些场合听到","recent":"最近看过的说法"}},"common":{"exp":{"save":"保存为文件"}}});
+mergeDeep(TBL.ar, {"screen":{"dict":{"scene":"أين قد تسمعها","recent":"ما شاهدته مؤخرًا"}},"common":{"exp":{"save":"حفظ كملف"}}});
 window.TEBIKI_I18N = TBL;
 })();

@@ -9,7 +9,7 @@
      変えたら README の「シェルの変更点」に書く */
 (function(){
 
-var VER = '0.4.11';                // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
+var VER = '0.4.12';                // 🔴 更新のたびに上げる(build.gradle の versionName / sw.js の CACHE と一緒に)
 var APP_KEY = 'watashi_tebiki';        // バックアップの識別(別アプリのファイルを読まない)
 var LS = 'tebiki.';
 var LS_PREF = LS + 'pref.v1';
@@ -218,6 +218,8 @@ function screenApi(){
     markSaved: markSaved,               // 保存したら呼ぶ(戻るボタンの書きかけの確かめを出さない・2026-09-29)
     ask: askBox,                        // 確かめの窓(Play版はアプリの中・Web版は confirm)。ask(文, function(はい){...}, confirmが無いときの答え)
     backDefault: backDefault,           // 画面の back() が確かめのあとで「来た画面へ」を続けるとき
+    isNative: isNativeApp,              // Play版か(書き出しの「ファイルで ほぞん」を出すか決める・2026-11-11)
+    saveFile: nativeSaveFile,           // saveFile(名前, 文字, true, 共有の画面の題, function('ok'|'quiet'|'fail'))
     ver: VER,
     appKey: APP_KEY
   };

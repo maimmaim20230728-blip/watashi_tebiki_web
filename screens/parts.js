@@ -185,6 +185,20 @@
     copy.id = 'tebiki-exp-copy';
     api.Tap.bind(copy, function(){ copyText(api, ta); });
     ov.appendChild(copy);
+    /* Play版だけ(2026-11-11): いま欄にある文字を .txt にして共有の画面へ(コピーして別アプリに貼る手間を減らす)。Web版は今までどおりコピーだけ */
+    if(typeof api.isNative === 'function' && api.isNative() && typeof api.saveFile === 'function'){
+      var sv = api.el('button', 'btn wide', api.T('common.exp.save'));
+      sv.id = 'tebiki-exp-save';
+      api.Tap.bind(sv, function(){
+        var d = new Date();
+        var fname = api.appKey + '-text-' + d.getFullYear() + String(d.getMonth() + 1).padStart(2, '0') + String(d.getDate()).padStart(2, '0') + '.txt';
+        api.saveFile(fname, ta.value, true, api.T('common.exp.save'), function(r){
+          if(r === 'ok'){ if(typeof api.markSaved === 'function') api.markSaved(); api.toast(api.T('set.exported')); }
+          else if(r === 'fail') api.toast(api.T('common.saveFail'));
+        });
+      });
+      ov.appendChild(sv);
+    }
     var close = api.el('button', 'ov-close', api.T('common.close'));
     close.id = 'tebiki-ov-close';
     api.Tap.bind(close, function(){ ov.remove(); });

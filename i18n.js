@@ -3166,9 +3166,9 @@ TBL.ar = mergeDeep(JSON.parse(JSON.stringify(en)), {
 });
 /* ---- 0.4.12 追加(辞典の場面・さいきん見た言い方・ファイルで ほぞん) ---- */
 mergeDeep(TBL.de, {"screen":{"dict":{"scene":"Wo man das hört","recent":"Zuletzt angesehen"}},"common":{"exp":{"save":"Als Datei speichern"}}});
-mergeDeep(TBL.fr, {"screen":{"dict":{"scene":"Où on l'entend","recent":"Vus récemment"}},"common":{"exp":{"save":"Enregistrer en fichier"}}});
+mergeDeep(TBL.fr, {"screen":{"dict":{"scene":"Où on l'entend","recent":"Vues récemment"}},"common":{"exp":{"save":"Enregistrer dans un fichier"}}});
 mergeDeep(TBL.es, {"screen":{"dict":{"scene":"Dónde se oye","recent":"Vistas hace poco"}},"common":{"exp":{"save":"Guardar como archivo"}}});
-mergeDeep(TBL.it, {"screen":{"dict":{"scene":"Dove si sente","recent":"Visti di recente"}},"common":{"exp":{"save":"Salva come file"}}});
+mergeDeep(TBL.it, {"screen":{"dict":{"scene":"Dove si sente","recent":"Viste di recente"}},"common":{"exp":{"save":"Salva come file"}}});
 mergeDeep(TBL.pt, {"screen":{"dict":{"scene":"Onde se ouve","recent":"Vistas há pouco"}},"common":{"exp":{"save":"Salvar como arquivo"}}});
 mergeDeep(TBL.nl, {"screen":{"dict":{"scene":"Waar je het hoort","recent":"Onlangs bekeken"}},"common":{"exp":{"save":"Opslaan als bestand"}}});
 mergeDeep(TBL.sv, {"screen":{"dict":{"scene":"Var man hör det","recent":"Nyligen visade"}},"common":{"exp":{"save":"Spara som fil"}}});
